@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ColorPicker: View {
+    @ObservedObject var viewModel: PaletteViewModel
+    
     @State var r: Double = 1
     @State var g: Double = 1
     @State var b: Double = 1
@@ -47,6 +49,9 @@ struct ColorPicker: View {
             .navigationBarItems(trailing:                     Image(systemName: "plus.square")
                     .resizable()
                     .frame(width: 30, height: 30)
+                    .onTapGesture {
+                        self.viewModel.addColor(color: Color(red: self.r, green: self.g, blue: self.b))
+                    }
             )
         }
     }
@@ -54,6 +59,6 @@ struct ColorPicker: View {
 
 struct ColorPicker_Previews: PreviewProvider {
     static var previews: some View {
-        ColorPicker()
+        ColorPicker(viewModel: PaletteViewModel())
     }
 }

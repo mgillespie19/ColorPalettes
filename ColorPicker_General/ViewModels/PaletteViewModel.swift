@@ -12,7 +12,8 @@ import UIKit
 import SwiftUI
 
 class PaletteViewModel: ObservableObject {
-    @Published private(set) var colors: [ColorRow] = [ColorRow(Color1: Color.white, Color2: Color.blue), ColorRow(Color1: Color.red, Color2: Color.black)]
+//    @Published private(set) var colors: [ColorRow] = [ColorRow(Color1: Color.white, Color2: Color.blue), ColorRow(Color1: Color.red, Color2: Color.black)]
+    @Published private(set) var colors: [ColorRow] = []
     
     private var TAG = "CVM:"
     private var cancellable: AnyCancellable?
