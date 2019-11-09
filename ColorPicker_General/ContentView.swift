@@ -9,12 +9,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @State var selectedView = 1
 
     var body: some View {
         ZStack {
             TabView(selection: $selectedView) {
-                AllColors().tabItem {
+                AllColors(viewModel: PaletteViewModel()).tabItem {
                     Text("Colors")
                     Image(systemName: "paintbrush.fill")
                 }.tag(1)
