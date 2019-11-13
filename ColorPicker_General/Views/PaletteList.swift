@@ -17,21 +17,31 @@ struct PaletteList: View {
     var body: some View {
         NavigationView {
             List(viewModel.palettes) { palette in
-                Text("Palette")
-                    .onTapGesture {
+                NavigationLink (destination:
+                    PaletteContainer(viewModel: self.selectedPalette)
+                ) {
+                    Button(action:  {
                         self.showPaletteDetail.toggle()
                         self.selectedPalette = palette
+                    }, label: {
+                        Text("Palette")
+                            .font(.title)
+                            .padding(.top)
+                            .padding(.bottom)
+                    } )
                 }
             }.navigationBarTitle("My Palettes")
-            .navigationBarItems(trailing: Button(action: {
-                self.viewModel.addPalette()
-            }, label: {
-                Image(systemName: "plus")
-            }))
+                .navigationBarItems(trailing: Button(action: {
+                    self.viewModel.addPalette()
+                }, label: {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                }))
         }
-//        .sheet(isPresented: $showPaletteDetail, content: { PaletteView(viewModel: self.selectedPalette) })
-        .sheet(isPresented: $showPaletteDetail, content: { PaletteContainer(viewModel: self.selectedPalette) })
-
+        //        .sheet(isPresented: $showPaletteDetail, content: { PaletteView(viewModel: self.selectedPalette) })
+        //        .sheet(isPresented: $showPaletteDetail, content: { PaletteContainer(viewModel: self.selectedPalette) })
+        
     }
 }
 

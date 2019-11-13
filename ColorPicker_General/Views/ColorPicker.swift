@@ -18,7 +18,7 @@ struct ColorPicker: View {
     @State var b: Double = 1
     
     var body: some View {
-        NavigationView {
+        ZStack {
             VStack {
                 Spacer()
                 HStack{
@@ -35,6 +35,7 @@ struct ColorPicker: View {
                         .foregroundColor(textColorToggle ? Color.white : Color.black)
                     Slider(value: self.$g)
                         .padding()
+                    
                 }.padding()
                 
                 HStack{
@@ -50,18 +51,19 @@ struct ColorPicker: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
             .background(Color(red: self.r, green: self.g, blue: self.b))
             .edgesIgnoringSafeArea(.all)
-            .navigationBarTitle("Dr1p Dr0p")
-            .navigationBarItems(trailing:                     Image(systemName: "plus.square")
-            .resizable()
-            .frame(width: 30, height: 30)
-            .rotationEffect(show ? Angle(degrees: 180) : Angle(degrees: -180))
-            .animation(.spring())
-            .foregroundColor(textColorToggle ? Color.white : Color.black)
-            .onTapGesture {
-                self.viewModel.addColor(r: self.r, g: self.g, b: self.b)
-                self.show.toggle()
-                }
-            )
+            
+            Image(systemName: "plus.square")
+                .resizable()
+                .frame(width: 85, height: 85)
+                .rotationEffect(show ? Angle(degrees: 180) : Angle(degrees: -180))
+                .animation(.spring())
+                .foregroundColor(textColorToggle ? Color.white : Color.black)
+                .padding()
+                .offset(y: 200)
+                .onTapGesture {
+                    self.viewModel.addColor(r: self.r, g: self.g, b: self.b)
+                    self.show.toggle()
+            }
         }
     }
 }

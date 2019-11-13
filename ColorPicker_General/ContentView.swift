@@ -17,6 +17,8 @@ struct ContentView: View {
         PaletteList(viewModel: PaletteListViewmodel()).tabItem {
             Text("Colors")
             Image(systemName: "paintbrush.fill")
+            .resizable()
+            .frame(width: 45, height: 45)
         }
     }
 }

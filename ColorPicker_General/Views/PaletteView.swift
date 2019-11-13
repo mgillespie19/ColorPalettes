@@ -9,30 +9,27 @@
 import SwiftUI
 
 struct PaletteView: View {
-//    var allColors: [ColorRow] = [ColorRow(Color1: Color.white, Color2: Color.blue), ColorRow(Color1: Color.red, Color2: Color.black)]
+    //    var allColors: [ColorRow] = [ColorRow(Color1: Color.white, Color2: Color.blue), ColorRow(Color1: Color.red, Color2: Color.black)]
     @ObservedObject var viewModel: PaletteViewModel
     
     var body: some View {
-        NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
-                    HStack {
-                        VStack {
-                            ForEach(self.viewModel.Rcolors) { c in
-                                ColorTile(backgroundColor: c.color, foregroundColor: c.textColor, hexID: c.hex)
-                            }
-                        }
-                        Spacer()
-                        
-                        VStack {
-                            ForEach(self.viewModel.Lcolors) { c in
-                                 ColorTile(backgroundColor: c.color, foregroundColor: c.textColor, hexID: c.hex)
-                            }
-                        }
-
+        ScrollView(.vertical, showsIndicators: false) {
+            HStack {
+                VStack {
+                    ForEach(self.viewModel.Rcolors) { c in
+                        ColorTile(backgroundColor: c.color, foregroundColor: c.textColor, hexID: c.hex)
                     }
-                    .padding()
-//                }
-            }.navigationBarTitle("Palette 1 :)")
+                }
+                Spacer()
+                
+                VStack {
+                    ForEach(self.viewModel.Lcolors) { c in
+                        ColorTile(backgroundColor: c.color, foregroundColor: c.textColor, hexID: c.hex)
+                    }
+                }
+                
+            }
+            .padding()
         }
     }
 }

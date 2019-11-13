@@ -32,7 +32,7 @@ struct ColorTile: View {
                     .frame(width: 175)
             }
             .padding()
-            .frame(width: show ? 175 : 175, height: show ? 350 : 175)
+            .frame(width: show ? 175 : 175, height: show ? 365 : 175)
             .background(self.backgroundColor)
         }
         .cornerRadius(30)
