@@ -13,6 +13,8 @@ struct ColorTile: View {
     
     var id: ColorTile { self }
     var backgroundColor: Color
+    var foregroundColor: Color
+    var hexID: String
     
     var body: some View {
         
@@ -23,6 +25,11 @@ struct ColorTile: View {
         }) {
             VStack() {
                 Spacer()
+                Text (hexID)
+                    .foregroundColor(self.foregroundColor)
+                    .font(.headline)
+                    .fontWeight(.light)
+                    .frame(width: 175)
             }
             .padding()
             .frame(width: show ? 175 : 175, height: show ? 350 : 175)
@@ -37,6 +44,6 @@ struct ColorTile: View {
 
 struct ColorTile_Previews: PreviewProvider {
     static var previews: some View {
-        ColorTile(backgroundColor: Color.white)
+        ColorTile(backgroundColor: Color.white, foregroundColor: Color.black, hexID: "FFFFFF")
     }
 }

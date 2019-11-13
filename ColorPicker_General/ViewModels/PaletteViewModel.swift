@@ -11,12 +11,11 @@ import Combine
 import UIKit
 import SwiftUI
 
-class PaletteViewModel: ObservableObject {
-//    @Published private(set) var colors: [ColorRow] = [ColorRow(Color1: Color.white, Color2: Color.blue), ColorRow(Color1: Color.red, Color2: Color.black)]
+class PaletteViewModel: Identifiable, ObservableObject {
     @Published private(set) var Rcolors: [ColorCell]
     @Published private(set) var Lcolors: [ColorCell]
     
-    private var TAG = "CVM:"
+    private var TAG = "PVM:"
     private var cancellable: AnyCancellable?
     
     init() {
@@ -29,11 +28,17 @@ class PaletteViewModel: ObservableObject {
         cancellable?.cancel()
     }
     
-    func addColor(color: Color) {
+    func addColor(r: Double, g: Double, b: Double) {
+        let r_str = String(format:"%02X", Int(r * 255))
+        let g_str = String(format:"%02X", Int(g * 255))
+        let b_str = String(format:"%02X", Int(b * 255))
+        let helper = Helpers()
+        
+        
         if (Rcolors.count <= Lcolors.count) {
-            Rcolors.append(ColorCell(c: color))
+            Rcolors.append(ColorCell(c: Color(red: r, green: g, blue: b), h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b)))
         } else {
-            Lcolors.append(ColorCell(c: color))
+            Lcolors.append(ColorCell(c: Color(red: r, green: g, blue: b), h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b)))
         }
     }
     

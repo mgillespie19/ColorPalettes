@@ -12,6 +12,7 @@ struct ColorPicker: View {
     @ObservedObject var viewModel: PaletteViewModel
     
     @State var show = false
+    @State var textColorToggle = false
     @State var r: Double = 1
     @State var g: Double = 1
     @State var b: Double = 1
@@ -23,6 +24,7 @@ struct ColorPicker: View {
                 HStack{
                     Text("R: ")
                         .font(.largeTitle)
+                        .foregroundColor(textColorToggle ? Color.white : Color.black)
                     Slider(value: self.$r)
                         .padding()
                 }.padding()
@@ -30,6 +32,7 @@ struct ColorPicker: View {
                 HStack{
                     Text("G: ")
                         .font(.largeTitle)
+                        .foregroundColor(textColorToggle ? Color.white : Color.black)
                     Slider(value: self.$g)
                         .padding()
                 }.padding()
@@ -37,6 +40,7 @@ struct ColorPicker: View {
                 HStack{
                     Text("B: ")
                         .font(.largeTitle)
+                        .foregroundColor(textColorToggle ? Color.white : Color.black)
                     Slider(value: self.$b)
                         .padding()
                 }.padding()
@@ -48,14 +52,15 @@ struct ColorPicker: View {
             .edgesIgnoringSafeArea(.all)
             .navigationBarTitle("Dr1p Dr0p")
             .navigationBarItems(trailing:                     Image(systemName: "plus.square")
-                    .resizable()
-                    .frame(width: 30, height: 30)
+            .resizable()
+            .frame(width: 30, height: 30)
             .rotationEffect(show ? Angle(degrees: 180) : Angle(degrees: -180))
-                    .animation(.spring())
-                    .onTapGesture {
-                        self.viewModel.addColor(color: Color(red: self.r, green: self.g, blue: self.b))
-                        self.show.toggle()
-                    }
+            .animation(.spring())
+            .foregroundColor(textColorToggle ? Color.white : Color.black)
+            .onTapGesture {
+                self.viewModel.addColor(r: self.r, g: self.g, b: self.b)
+                self.show.toggle()
+                }
             )
         }
     }

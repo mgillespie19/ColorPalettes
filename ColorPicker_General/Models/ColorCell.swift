@@ -11,8 +11,12 @@ import SwiftUI
 
 class ColorCell: Identifiable {
     var color: Color
+    var hex: String
+    var textColor: Color
     
-    init(c: Color) {
+    init(c: Color, h: String, tc: Color) {
         self.color = c
+        self.hex = h
+        self.textColor = tc
     }
 }

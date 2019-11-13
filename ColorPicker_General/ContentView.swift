@@ -16,7 +16,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedView) {
-                AllColors(viewModel: self.viewModel).tabItem {
+                PaletteView(viewModel: self.viewModel).tabItem {
                     Text("Colors")
                     Image(systemName: "paintbrush.fill")
                 }.tag(1)
