@@ -24,6 +24,7 @@
 		F6E2266B237C906400EC2D1E /* PaletteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E2266A237C906400EC2D1E /* PaletteList.swift */; };
 		F6E2266D237C939500EC2D1E /* PaletteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E2266C237C939500EC2D1E /* PaletteListViewModel.swift */; };
 		F6E2266F237C96E800EC2D1E /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E2266E237C96E800EC2D1E /* ColorCell.swift */; };
+		F6E22671237C9B8A00EC2D1E /* PaletteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E22670237C9B8A00EC2D1E /* PaletteContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		F6E2266A237C906400EC2D1E /* PaletteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteList.swift; sourceTree = "<group>"; };
 		F6E2266C237C939500EC2D1E /* PaletteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteListViewModel.swift; sourceTree = "<group>"; };
 		F6E2266E237C96E800EC2D1E /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
+		F6E22670237C9B8A00EC2D1E /* PaletteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				F612F1812375E068009BA2EC /* ColorTile.swift */,
 				F6E22668237C902F00EC2D1E /* PaletteView.swift */,
 				F6E2266A237C906400EC2D1E /* PaletteList.swift */,
+				F6E22670237C9B8A00EC2D1E /* PaletteContainer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				F612F1822375E068009BA2EC /* ColorTile.swift in Sources */,
 				F612F1532375DA96009BA2EC /* ContentView.swift in Sources */,
 				F6E22669237C902F00EC2D1E /* PaletteView.swift in Sources */,
+				F6E22671237C9B8A00EC2D1E /* PaletteContainer.swift in Sources */,
 				F6E2266B237C906400EC2D1E /* PaletteList.swift in Sources */,
 				F6E2266F237C96E800EC2D1E /* ColorCell.swift in Sources */,
 				F612F1512375DA96009BA2EC /* ColorPicker_General.xcdatamodeld in Sources */,

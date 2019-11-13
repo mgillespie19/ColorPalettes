@@ -22,9 +22,16 @@ struct PaletteList: View {
                         self.showPaletteDetail.toggle()
                         self.selectedPalette = palette
                 }
-            }
+            }.navigationBarTitle("My Palettes")
+            .navigationBarItems(trailing: Button(action: {
+                self.viewModel.addPalette()
+            }, label: {
+                Image(systemName: "plus")
+            }))
         }
-        .sheet(isPresented: $showPaletteDetail, content: { PaletteView(viewModel: self.selectedPalette) })
+//        .sheet(isPresented: $showPaletteDetail, content: { PaletteView(viewModel: self.selectedPalette) })
+        .sheet(isPresented: $showPaletteDetail, content: { PaletteContainer(viewModel: self.selectedPalette) })
+
     }
 }
 
