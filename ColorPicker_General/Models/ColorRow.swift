@@ -9,12 +9,10 @@
 import Foundation
 import SwiftUI
 
-class ColorRow: Identifiable {
-    let color1: Color
-    var color2: Color
+class ColorCell: Identifiable {
+    var color: Color
     
-    init(Color1: Color, Color2: Color) {
-        self.color1 = Color1
-        self.color2 = Color2
+    init(c: Color) {
+        self.color = c
     }
 }

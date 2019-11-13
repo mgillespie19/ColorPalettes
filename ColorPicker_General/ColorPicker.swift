@@ -11,6 +11,7 @@ import SwiftUI
 struct ColorPicker: View {
     @ObservedObject var viewModel: PaletteViewModel
     
+    @State var show = false
     @State var r: Double = 1
     @State var g: Double = 1
     @State var b: Double = 1
@@ -49,8 +50,11 @@ struct ColorPicker: View {
             .navigationBarItems(trailing:                     Image(systemName: "plus.square")
                     .resizable()
                     .frame(width: 30, height: 30)
+            .rotationEffect(show ? Angle(degrees: 180) : Angle(degrees: -180))
+                    .animation(.spring())
                     .onTapGesture {
                         self.viewModel.addColor(color: Color(red: self.r, green: self.g, blue: self.b))
+                        self.show.toggle()
                     }
             )
         }

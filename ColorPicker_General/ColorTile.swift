@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ColorTile: View {
     @State var show = false
+    
+    var id: ColorTile { self }
     var backgroundColor: Color
     
     var body: some View {
@@ -23,12 +25,13 @@ struct ColorTile: View {
                 Spacer()
             }
             .padding()
-            .frame(width: show ? 300 : 175, height: show ? 700 : 175)
+            .frame(width: show ? 175 : 175, height: show ? 350 : 175)
             .background(self.backgroundColor)
         }
         .cornerRadius(30)
         .animation(.spring())
         .shadow(color: Color(red: 0.88, green: 0.88, blue: 0.88), radius: 10)
+        .padding(.top)
     }
 }
 

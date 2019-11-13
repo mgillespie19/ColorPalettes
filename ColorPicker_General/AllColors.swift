@@ -15,14 +15,23 @@ struct AllColors: View {
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
-                ForEach(self.viewModel.colors) { row in
                     HStack {
-                        ColorTile(backgroundColor: row.color1)
+                        VStack {
+                            ForEach(self.viewModel.Rcolors) { c in
+                                ColorTile(backgroundColor: c.color)
+                            }
+                        }
                         Spacer()
-                        ColorTile(backgroundColor: row.color2)
+                        
+                        VStack {
+                            ForEach(self.viewModel.Lcolors) { c in
+                                ColorTile(backgroundColor: c.color)
+                            }
+                        }
+
                     }
                     .padding()
-                }
+//                }
             }.navigationBarTitle("Palette 1 :)")
         }
     }

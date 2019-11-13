@@ -13,13 +13,16 @@ import SwiftUI
 
 class PaletteViewModel: ObservableObject {
 //    @Published private(set) var colors: [ColorRow] = [ColorRow(Color1: Color.white, Color2: Color.blue), ColorRow(Color1: Color.red, Color2: Color.black)]
-    @Published private(set) var colors: [ColorRow] = []
+    @Published private(set) var Rcolors: [ColorCell]
+    @Published private(set) var Lcolors: [ColorCell]
     
     private var TAG = "CVM:"
     private var cancellable: AnyCancellable?
     
     init() {
         print(TAG, "init called")
+        Rcolors = []
+        Lcolors = []
     }
     
     deinit {
@@ -27,10 +30,10 @@ class PaletteViewModel: ObservableObject {
     }
     
     func addColor(color: Color) {
-        if (self.colors.last?.color2 == Color.clear) {
-            self.colors.last?.color2 = color
+        if (Rcolors.count <= Lcolors.count) {
+            Rcolors.append(ColorCell(c: color))
         } else {
-            self.colors.append(ColorRow(Color1: color, Color2: Color.clear))
+            Lcolors.append(ColorCell(c: color))
         }
     }
     
