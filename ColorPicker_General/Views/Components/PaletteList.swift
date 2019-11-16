@@ -12,13 +12,13 @@ struct PaletteList: View {
     @ObservedObject var viewModel: PaletteListViewmodel
     
     @State var showPaletteDetail = false
-    @State var selectedPalette: PaletteViewModel = PaletteViewModel()
+    @State var selectedPalette: PaletteViewModel?
     
     var body: some View {
         NavigationView {
             List(viewModel.palettes) { palette in
                 NavigationLink (destination:
-                    PaletteContainer(viewModel: self.selectedPalette)
+                    PaletteContainer(viewModel: self.selectedPalette ?? PaletteViewModel())
                 ) {
                     Button(action:  {
                         self.showPaletteDetail.toggle()

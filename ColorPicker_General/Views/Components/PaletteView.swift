@@ -13,23 +13,26 @@ struct PaletteView: View {
     @ObservedObject var viewModel: PaletteViewModel
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            HStack {
-                VStack {
-                    ForEach(self.viewModel.Rcolors) { c in
-                        ColorTile(backgroundColor: c.color, foregroundColor: c.textColor, hexID: c.hex)
+        VStack {
+            ScrollView(.vertical, showsIndicators: false) {
+                HStack {
+                    VStack {
+                        ForEach(self.viewModel.Rcolors) { c in
+                            ColorTile(backgroundColor: c.color, foregroundColor: c.textColor, hexID: c.hex)
+                        }
                     }
-                }
-                Spacer()
-                
-                VStack {
-                    ForEach(self.viewModel.Lcolors) { c in
-                        ColorTile(backgroundColor: c.color, foregroundColor: c.textColor, hexID: c.hex)
+                    Spacer()
+                    
+                    VStack {
+                        ForEach(self.viewModel.Lcolors) { c in
+                            ColorTile(backgroundColor: c.color, foregroundColor: c.textColor, hexID: c.hex)
+                        }
                     }
+                    
                 }
+                .padding()
                 
             }
-            .padding()
         }
     }
 }
