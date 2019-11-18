@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-class ColorCell: Identifiable {
+class ColorCell: Codable, Identifiable {
     var color: Color
     var hex: String
     var textColor: Color
@@ -18,5 +18,34 @@ class ColorCell: Identifiable {
         self.color = c
         self.hex = h
         self.textColor = tc
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case color
+        case hex
+        case textColor
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        hex = try container.decode(String.self, forKey: .hex)
+        
+        let colorData = try container.decode(Data.self, forKey: .color)
+        color = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? Color ?? Color.white
+        
+        let textColorData = try container.decode(Data.self, forKey: .textColor)
+        textColor = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(textColorData) as? Color ?? Color.black
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(hex, forKey: .hex)
+        
+        let colorData = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
+        try container.encode(colorData, forKey: .color)
+        
+        let textColorData = try NSKeyedArchiver.archivedData(withRootObject: textColor, requiringSecureCoding: false)
+        try container.encode(textColorData, forKey: .textColor)
     }
 }
