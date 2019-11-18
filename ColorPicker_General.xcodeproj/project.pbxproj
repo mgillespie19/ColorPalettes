@@ -166,6 +166,9 @@
 		F612F1802375E05A009BA2EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F6E2266A237C906400EC2D1E /* PaletteList.swift */,
+				F6E22668237C902F00EC2D1E /* PaletteView.swift */,
+				F6E22670237C9B8A00EC2D1E /* PaletteContainer.swift */,
 				F6E22672237CD15900EC2D1E /* Components */,
 			);
 			path = Views;
@@ -201,9 +204,6 @@
 			children = (
 				F612F1812375E068009BA2EC /* ColorTile.swift */,
 				F612F17E2375DEFB009BA2EC /* ColorPicker.swift */,
-				F6E22668237C902F00EC2D1E /* PaletteView.swift */,
-				F6E2266A237C906400EC2D1E /* PaletteList.swift */,
-				F6E22670237C9B8A00EC2D1E /* PaletteContainer.swift */,
 				F637FB90237E3EC1001B1D85 /* FilterView.swift */,
 			);
 			path = Components;
