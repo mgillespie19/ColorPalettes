@@ -12,16 +12,14 @@ import UIKit
 import SwiftUI
 
 class PaletteViewModel: Identifiable, ObservableObject {
-    @Published private(set) var Rcolors: [ColorCell]
-    @Published private(set) var Lcolors: [ColorCell]
+    @Published private(set) var Rcolors: [ColorCell] = []
+    @Published private(set) var Lcolors: [ColorCell] = []
     
     private var TAG = "PVM:"
     private var cancellable: AnyCancellable?
     
     init() {
         print(TAG, "init called")
-        Rcolors = []
-        Lcolors = []
     }
     
     deinit {
@@ -34,11 +32,10 @@ class PaletteViewModel: Identifiable, ObservableObject {
         let b_str = String(format:"%02X", Int(b * 255))
         let helper = Helpers()
         
-        
         if (Rcolors.count <= Lcolors.count) {
-            Rcolors.append(ColorCell(c: Color(red: r, green: g, blue: b), h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b)))
+            Rcolors.append(ColorCell(R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b)))
         } else {
-            Lcolors.append(ColorCell(c: Color(red: r, green: g, blue: b), h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b)))
+            Lcolors.append(ColorCell(R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b)))
         }
     }
     

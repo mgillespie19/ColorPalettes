@@ -9,13 +9,17 @@
 import Foundation
 import SwiftUI
 
-class ColorCell: Codable, Identifiable {
-    var color: Color
+class ColorCell: Identifiable {
+    var r: Double
+    var g: Double
+    var b: Double
     var hex: String
     var textColor: Color
     
-    init(c: Color, h: String, tc: Color) {
-        self.color = c
+    init(R: Double, G: Double, B: Double, h: String, tc: Color) {
+        self.r = R
+        self.g = G
+        self.b = B
         self.hex = h
         self.textColor = tc
     }
@@ -24,28 +28,5 @@ class ColorCell: Codable, Identifiable {
         case color
         case hex
         case textColor
-    }
-    
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        hex = try container.decode(String.self, forKey: .hex)
-        
-        let colorData = try container.decode(Data.self, forKey: .color)
-        color = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? Color ?? Color.white
-        
-        let textColorData = try container.decode(Data.self, forKey: .textColor)
-        textColor = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(textColorData) as? Color ?? Color.black
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(hex, forKey: .hex)
-        
-        let colorData = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
-        try container.encode(colorData, forKey: .color)
-        
-        let textColorData = try NSKeyedArchiver.archivedData(withRootObject: textColor, requiringSecureCoding: false)
-        try container.encode(textColorData, forKey: .textColor)
     }
 }

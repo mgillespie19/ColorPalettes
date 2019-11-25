@@ -25,7 +25,12 @@ class PaletteListViewmodel: ObservableObject {
     }
     
     func addPalette() {
+        print("adding palette!")
+        if (self.palettes.count > 0) {
+            print("previous c1: \(String(describing: self.palettes.first?.Lcolors.count))")
+        }
         self.palettes.append(PaletteViewModel())
+        print("new c1: \(self.palettes.first?.Lcolors.count)")
     }
     
     func cancel() {

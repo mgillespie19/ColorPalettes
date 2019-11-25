@@ -18,14 +18,14 @@ struct PaletteView: View {
                 HStack {
                     VStack {
                         ForEach(self.viewModel.Rcolors) { c in
-                            ColorTile(backgroundColor: c.color, foregroundColor: c.textColor, hexID: c.hex)
+                            ColorTile(backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex)
                         }
                     }
                     Spacer()
                     
                     VStack {
                         ForEach(self.viewModel.Lcolors) { c in
-                            ColorTile(backgroundColor: c.color, foregroundColor: c.textColor, hexID: c.hex)
+                            ColorTile(backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex)
                         }
                     }
                     

@@ -9,10 +9,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var viewModel: PaletteViewModel = PaletteViewModel()
-    
-    @State var selectedView = 1
-    
     var body: some View {
         PaletteList(viewModel: PaletteListViewmodel()).tabItem {
             Text("Colors")
