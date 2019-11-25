@@ -40,6 +40,10 @@ class PaletteViewModel: Identifiable, ObservableObject {
         }
     }
     
+    func editPalette() {
+        
+    }
+    
     func cancel() {
         cancellable?.cancel()
     }

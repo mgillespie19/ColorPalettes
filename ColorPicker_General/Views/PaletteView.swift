@@ -31,7 +31,6 @@ struct PaletteView: View {
                     
                 }
                 .padding()
-                
             }
         }
     }
