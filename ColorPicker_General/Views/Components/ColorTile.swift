@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ColorTile: View {
     @State var show = false
+    @State var showDeleteButton = false
     
     var id: ColorTile { self }
     var backgroundColor: Color
@@ -17,28 +18,41 @@ struct ColorTile: View {
     var hexID: String
     
     var body: some View {
-        
-        Button(action: {
-            withAnimation {
-                self.show.toggle()
+        ZStack(alignment: .topLeading) {
+            Button(action: {
+                withAnimation {
+                    self.show.toggle()
+                }
+            }) {
+                VStack() {
+                    Spacer()
+                    Text (hexID)
+                        .foregroundColor(self.foregroundColor)
+                        .font(.headline)
+                        .fontWeight(.light)
+                        .frame(width: 175)
+                }
+                .padding()
+                .frame(width: show ? 175 : 175, height: show ? 365 : 175)
+                .background(self.backgroundColor)
             }
-        }) {
-            VStack() {
-                Spacer()
-                Text (hexID)
-                    .foregroundColor(self.foregroundColor)
-                    .font(.headline)
-                    .fontWeight(.light)
-                    .frame(width: 175)
+            .cornerRadius(30)
+            .animation(.spring())
+            .shadow(color: Color(red: 0.88, green: 0.88, blue: 0.88), radius: 10)
+            .padding(.top)
+            
+            Button(action: {
+                withAnimation {
+                    self.showDeleteButton.toggle()
+                }
+            }) {
+                Image(systemName: "minus.circle.fill")
+                    .resizable()
+                    .offset(x:-15)
+                    .frame(width: showDeleteButton ? 65 : 0, height: showDeleteButton ? 65 : 0)
+                    .foregroundColor(.red)
             }
-            .padding()
-            .frame(width: show ? 175 : 175, height: show ? 365 : 175)
-            .background(self.backgroundColor)
         }
-        .cornerRadius(30)
-        .animation(.spring())
-        .shadow(color: Color(red: 0.88, green: 0.88, blue: 0.88), radius: 10)
-        .padding(.top)
     }
 }
 

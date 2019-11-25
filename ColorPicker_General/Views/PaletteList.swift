@@ -43,9 +43,9 @@ struct PaletteList: View {
                             .resizable()
                             .frame(width: 25, height: 25)
                 })
-//                    .alert(isPresented: $showNewPaletteAlert) {
-//                    Alert(title: Text("Name Your New Palette"), message: nil, dismissButton: .default(Text("Got it!")))
-//                }
+                    .alert(isPresented: $showNewPaletteAlert) {
+                        Alert(title: Text("Name Your New Palette"), message: nil, dismissButton: .default(Text("Got it!")))
+                    }
             )
         }
     }
