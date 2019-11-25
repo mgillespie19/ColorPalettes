@@ -27,7 +27,7 @@ struct PaletteList: View {
                         self.showPaletteDetail.toggle()
                         self.selectedPalette = palette
                     }, label: {
-                        Text("Palette")
+                        Text(palette.PaletteName)
                             .font(.title)
                             .padding(.top)
                             .padding(.bottom)

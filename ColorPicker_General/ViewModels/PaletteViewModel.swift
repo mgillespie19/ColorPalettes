@@ -14,6 +14,7 @@ import SwiftUI
 class PaletteViewModel: Identifiable, ObservableObject {
     @Published private(set) var Rcolors: [ColorCell] = []
     @Published private(set) var Lcolors: [ColorCell] = []
+    @Published private(set) var PaletteName: String = "Palette"
     
     private var TAG = "PVM:"
     private var cancellable: AnyCancellable?
