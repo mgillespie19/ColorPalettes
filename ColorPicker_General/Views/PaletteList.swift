@@ -45,7 +45,8 @@ struct PaletteList: View {
                     , label: {
                         Image(systemName: "plus")
                             .resizable()
-                            .frame(width: 25, height: 25)
+                            .frame(width: 30, height: 30)
+                            .padding(.top)
                 })
                 )
                 

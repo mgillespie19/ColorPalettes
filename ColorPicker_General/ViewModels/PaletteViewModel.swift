@@ -45,6 +45,10 @@ class PaletteViewModel: Identifiable, ObservableObject {
         
     }
     
+    func numColors() -> Int {
+        return (Rcolors.count + Lcolors.count)
+    }
+    
     func cancel() {
         cancellable?.cancel()
     }

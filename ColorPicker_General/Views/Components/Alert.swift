@@ -16,7 +16,10 @@ struct Alert: View {
     var body: some View {
         VStack (alignment: .center) {
             Text("Name your new palette")
-                .padding()
+                .fontWeight(.semibold)
+                .padding(.top)
+                .padding(.leading)
+                .padding(.trailing)
             
             TextField("Palette \(viewModel.palettes.count + 1)", text: $paletteName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -56,7 +59,7 @@ struct Alert: View {
         }
         .background(Color.white)
         .opacity(0.97)
-        .frame(width: 300, height: 200)
+        .frame(width: 300, height: 185)
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.45), radius: 12)
     }
