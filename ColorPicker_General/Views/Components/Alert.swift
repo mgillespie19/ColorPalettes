@@ -10,16 +10,15 @@ import SwiftUI
 
 struct Alert: View {
     @ObservedObject var viewModel: PaletteListViewmodel
-    @State var show: Bool
-    
-    @State var newPaletteName = ""
+    @Binding var show: Bool
+    @State var paletteName: String
     
     var body: some View {
         VStack (alignment: .center) {
             Text("Name your new palette")
                 .padding()
             
-            TextField("a sick name", text: $newPaletteName)
+            TextField("Palette \(viewModel.palettes.count + 1)", text: $paletteName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             
@@ -28,12 +27,16 @@ struct Alert: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    self.viewModel.addPalette()
+                    if (self.paletteName != "") {
+                        self.viewModel.addPalette(newName: self.paletteName)
+                    } else {
+                        self.viewModel.addPalette(newName: "Palette \(self.viewModel.palettes.count + 1)")
+                    }
                     UIApplication.shared.windows[0].rootViewController?.dismiss(animated: true, completion: {})
                     self.show.toggle()
                     UIApplication.shared.endEditing()
+                    self.paletteName = ""
                 }) {
-
                     Text("Done")
                 }
                 Spacer()
@@ -59,11 +62,11 @@ struct Alert: View {
     }
 }
 
-struct Alert_Previews: PreviewProvider {
-    static var previews: some View {
-        Alert(viewModel: PaletteListViewmodel(), show: false)
-    }
-}
+//struct Alert_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Alert(viewModel: PaletteListViewmodel(), show: true, paletteName: "")
+//    }
+//}
 
 extension UIApplication {
        func endEditing() {

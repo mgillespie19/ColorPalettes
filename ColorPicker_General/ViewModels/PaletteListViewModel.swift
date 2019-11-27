@@ -24,13 +24,13 @@ class PaletteListViewmodel: ObservableObject {
         cancellable?.cancel()
     }
     
-    func addPalette() {
+    func addPalette(newName: String) {
         print("adding palette!")
-        if (self.palettes.count > 0) {
-            print("previous c1: \(String(describing: self.palettes.first?.Lcolors.count))")
-        }
-        self.palettes.append(PaletteViewModel())
-        print("new c1: \(self.palettes.first?.Lcolors.count)")
+        self.palettes.append(PaletteViewModel(name: newName))
+    }
+    
+    func deletePalette(atIndex: Int) {
+        self.palettes.remove(at: atIndex)
     }
     
     func cancel() {

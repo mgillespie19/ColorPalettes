@@ -20,39 +20,54 @@ struct PaletteList: View {
     var body: some View {
         ZStack {
             NavigationView {
-                List(viewModel.palettes) { palette in
-                    NavigationLink (destination:
-                        PaletteContainer(viewModel: palette)
-                    ) {
-                        Button(action:  {
-                            self.showPaletteDetail.toggle()
-                            self.selectedPalette = palette
-                        }, label: {
-                            Text(palette.PaletteName)
-                                .font(.title)
-                                .padding(.top)
-                                .padding(.bottom)
-                        })
+                List {
+                    ForEach(viewModel.palettes) { palette in
+                        NavigationLink (destination:
+                            PaletteContainer(viewModel: palette)
+                        ) {
+                            Button(action:  {
+                                self.showPaletteDetail.toggle()
+                                self.selectedPalette = palette
+                            }, label: {
+                                Text(palette.PaletteName)
+                                    .font(.title)
+                                    .padding(.top)
+                                    .padding(.bottom)
+                            })
+                        }
                     }
-                }.navigationBarTitle("My Palettes")
-                    .navigationBarItems(trailing: Button(action: {
-                        self.showNewPaletteAlert.toggle()
-                    }
-                        , label: {
-                            Image(systemName: "plus")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                    })
+                .onDelete(perform: delete)
+                }
+                .navigationBarTitle("My Palettes")
+                .navigationBarItems(trailing: Button(action: {
+                    self.showNewPaletteAlert.toggle()
+                }
+                    , label: {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                })
                 )
+                
             }
+            .blur(radius: self.showNewPaletteAlert ? 4 : 0)
+            .disabled(self.showNewPaletteAlert)
+            .animation(.linear)
             
-            Alert(viewModel: self.viewModel, show: showNewPaletteAlert)
+            //            Alert(viewModel: self.viewModel, show: showNewPaletteAlert, paletteName: newPaletteName)
+            Alert(viewModel: self.viewModel, show: $showNewPaletteAlert, paletteName: newPaletteName)
                 .opacity(self.showNewPaletteAlert ? 1 : 0)
                 .offset(y: self.showNewPaletteAlert ? -100 : 500)
                 .animation(.easeInOut)
             //        .sheet(isPresented: $showNewPaletteAlert, content: {
             //            Alert(viewModel: self.viewModel)
             //        })
+        }
+    }
+    
+    private func delete(with indexSet: IndexSet) {
+        if (indexSet != nil && indexSet.count > 0) {
+            viewModel.deletePalette(atIndex: indexSet.first!)
         }
     }
 }

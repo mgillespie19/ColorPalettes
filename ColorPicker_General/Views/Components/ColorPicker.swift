@@ -70,6 +70,6 @@ struct ColorPicker: View {
 
 struct ColorPicker_Previews: PreviewProvider {
     static var previews: some View {
-        ColorPicker(viewModel: PaletteViewModel())
+        ColorPicker(viewModel: PaletteViewModel(name: "New Palette"))
     }
 }

@@ -38,6 +38,6 @@ struct PaletteView: View {
 
 struct AllColors_Previews: PreviewProvider {
     static var previews: some View {
-        PaletteView(viewModel: PaletteViewModel())
+        PaletteView(viewModel: PaletteViewModel(name: "Palette"))
     }
 }

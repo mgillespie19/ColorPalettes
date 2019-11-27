@@ -14,13 +14,14 @@ import SwiftUI
 class PaletteViewModel: Identifiable, ObservableObject {
     @Published private(set) var Rcolors: [ColorCell] = []
     @Published private(set) var Lcolors: [ColorCell] = []
-    @Published private(set) var PaletteName: String = "Palette"
+    var PaletteName: String
     
     private var TAG = "PVM:"
     private var cancellable: AnyCancellable?
     
-    init() {
+    init(name: String) {
         print(TAG, "init called")
+        PaletteName = name
     }
     
     deinit {
