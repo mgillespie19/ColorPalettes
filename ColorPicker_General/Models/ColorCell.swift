@@ -15,13 +15,15 @@ class ColorCell: Identifiable {
     var b: Double
     var hex: String
     var textColor: Color
+    var shouldDelete: Bool
     
-    init(R: Double, G: Double, B: Double, h: String, tc: Color) {
+    init(R: Double, G: Double, B: Double, h: String, tc: Color, ShouldDelete: Bool) {
         self.r = R
         self.g = G
         self.b = B
         self.hex = h
         self.textColor = tc
+        self.shouldDelete = ShouldDelete
     }
     
     enum CodingKeys: String, CodingKey {

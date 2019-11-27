@@ -35,14 +35,22 @@ class PaletteViewModel: Identifiable, ObservableObject {
         let helper = Helpers()
         
         if (Rcolors.count <= Lcolors.count) {
-            Rcolors.append(ColorCell(R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b)))
+            Rcolors.append(ColorCell(R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b), ShouldDelete: false))
         } else {
-            Lcolors.append(ColorCell(R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b)))
+            Lcolors.append(ColorCell(R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b), ShouldDelete: false))
         }
     }
     
     func editPalette() {
         
+    }
+    
+    func deleteRColor(atIndex: Int) {
+        Rcolors.remove(at: atIndex)
+    }
+    
+    func deleteLColor(atIndex: Int) {
+        Lcolors.remove(at: atIndex)
     }
     
     func numColors() -> Int {

@@ -20,6 +20,7 @@ struct PaletteView: View {
                         ForEach(self.viewModel.Rcolors) { c in
                             ColorTile(backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.editingMode)
                         }
+                        .onDelete(perform: deleteRight)
                     }
                     Spacer()
                     
@@ -27,11 +28,24 @@ struct PaletteView: View {
                         ForEach(self.viewModel.Lcolors) { c in
                             ColorTile(backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.editingMode)
                         }
+                        .onDelete(perform: deleteLeft)
                     }
                     
                 }
                 .padding()
             }
+        }
+    }
+    
+    private func deleteRight(with indexSet: IndexSet) {
+        if (indexSet != nil && indexSet.count > 0) {
+            viewModel.deleteRColor(atIndex: indexSet.first!)
+        }
+    }
+    
+    private func deleteLeft(with indexSet: IndexSet) {
+        if (indexSet != nil && indexSet.count > 0) {
+            viewModel.deleteLColor(atIndex: indexSet.first!)
         }
     }
 }
