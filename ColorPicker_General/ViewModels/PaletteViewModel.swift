@@ -14,6 +14,7 @@ import SwiftUI
 class PaletteViewModel: Identifiable, ObservableObject {
     @Published private(set) var Rcolors: [ColorCell] = []
     @Published private(set) var Lcolors: [ColorCell] = []
+    var idCounter = 0
     var PaletteName: String
     
     private var TAG = "PVM:"
@@ -35,22 +36,33 @@ class PaletteViewModel: Identifiable, ObservableObject {
         let helper = Helpers()
         
         if (Rcolors.count <= Lcolors.count) {
-            Rcolors.append(ColorCell(R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b), ShouldDelete: false))
+            Rcolors.append(ColorCell(ID: idCounter, R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b), ShouldDelete: false))
         } else {
-            Lcolors.append(ColorCell(R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b), ShouldDelete: false))
+            Lcolors.append(ColorCell(ID: idCounter, R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b), ShouldDelete: false))
         }
+        
+        idCounter += 1
     }
     
     func editPalette() {
         
     }
     
-    func deleteRColor(atIndex: Int) {
-        Rcolors.remove(at: atIndex)
-    }
-    
-    func deleteLColor(atIndex: Int) {
-        Lcolors.remove(at: atIndex)
+    func deleteColor(ID: Int) {
+        for i in 0..<Rcolors.count {
+            if (Rcolors[i].id == ID) {
+                print(TAG, "deleting color from right side...")
+                Rcolors.remove(at: i)
+                return
+            }
+        }
+        for i in 0...Lcolors.count {
+            if (Lcolors[i].id == ID) {
+                print(TAG, "deleting color from left side...")
+                Lcolors.remove(at: i)
+                return
+            }
+        }
     }
     
     func numColors() -> Int {

@@ -167,8 +167,9 @@
 			isa = PBXGroup;
 			children = (
 				F6E2266A237C906400EC2D1E /* PaletteList.swift */,
-				F6E22668237C902F00EC2D1E /* PaletteView.swift */,
 				F6E22670237C9B8A00EC2D1E /* PaletteContainer.swift */,
+				F6E22668237C902F00EC2D1E /* PaletteView.swift */,
+				F612F17E2375DEFB009BA2EC /* ColorPicker.swift */,
 				F6E22672237CD15900EC2D1E /* Components */,
 			);
 			path = Views;
@@ -203,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				F612F1812375E068009BA2EC /* ColorTile.swift */,
-				F612F17E2375DEFB009BA2EC /* ColorPicker.swift */,
 				F64FAD01238CA0B7006CB02C /* Alert.swift */,
 			);
 			path = Components;

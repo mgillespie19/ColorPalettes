@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PaletteView: View {
     @ObservedObject var viewModel: PaletteViewModel
-    @State var editingMode = false
+    @State var editingMode = true
     
     var body: some View {
         VStack {
@@ -18,34 +18,19 @@ struct PaletteView: View {
                 HStack {
                     VStack {
                         ForEach(self.viewModel.Rcolors) { c in
-                            ColorTile(backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.editingMode)
+                            ColorTile(id: c.id, backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.editingMode, viewModel: self.viewModel)
                         }
-                        .onDelete(perform: deleteRight)
                     }
                     Spacer()
                     
                     VStack {
                         ForEach(self.viewModel.Lcolors) { c in
-                            ColorTile(backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.editingMode)
+                            ColorTile(id: c.id, backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.editingMode, viewModel: self.viewModel)
                         }
-                        .onDelete(perform: deleteLeft)
                     }
-                    
                 }
                 .padding()
             }
-        }
-    }
-    
-    private func deleteRight(with indexSet: IndexSet) {
-        if (indexSet != nil && indexSet.count > 0) {
-            viewModel.deleteRColor(atIndex: indexSet.first!)
-        }
-    }
-    
-    private func deleteLeft(with indexSet: IndexSet) {
-        if (indexSet != nil && indexSet.count > 0) {
-            viewModel.deleteLColor(atIndex: indexSet.first!)
         }
     }
 }

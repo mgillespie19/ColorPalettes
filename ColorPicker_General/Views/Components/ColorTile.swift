@@ -9,13 +9,16 @@
 import SwiftUI
 
 struct ColorTile: View {
+    // local variables
     @State var expand = false
     
-    var id: ColorTile { self }
+    // instance variables
+    var id: Int
     var backgroundColor: Color
     var foregroundColor: Color
     var hexID: String
     @State var showDeleteButton: Bool
+    @ObservedObject var viewModel: PaletteViewModel
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -44,6 +47,7 @@ struct ColorTile: View {
             Button(action: {
                 withAnimation {
                     self.showDeleteButton.toggle()
+                    self.viewModel.deleteColor(ID: self.id)
                 }
             }) {
                 Image(systemName: "minus.circle.fill")
@@ -58,6 +62,6 @@ struct ColorTile: View {
 
 struct ColorTile_Previews: PreviewProvider {
     static var previews: some View {
-        ColorTile(backgroundColor: Color.white, foregroundColor: Color.black, hexID: "FFFFFF", showDeleteButton: true)
+        ColorTile(id: 1, backgroundColor: Color.white, foregroundColor: Color.black, hexID: "FFFFFF", showDeleteButton: true, viewModel: PaletteViewModel(name: "Palette!"))
     }
 }

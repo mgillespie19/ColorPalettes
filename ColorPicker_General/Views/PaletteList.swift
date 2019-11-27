@@ -54,15 +54,11 @@ struct PaletteList: View {
             .blur(radius: self.showNewPaletteAlert ? 4 : 0)
             .disabled(self.showNewPaletteAlert)
             .animation(.linear)
-            
-            //            Alert(viewModel: self.viewModel, show: showNewPaletteAlert, paletteName: newPaletteName)
+
             Alert(viewModel: self.viewModel, show: $showNewPaletteAlert, paletteName: newPaletteName)
                 .opacity(self.showNewPaletteAlert ? 1 : 0)
                 .offset(y: self.showNewPaletteAlert ? -100 : 500)
                 .animation(.easeInOut)
-            //        .sheet(isPresented: $showNewPaletteAlert, content: {
-            //            Alert(viewModel: self.viewModel)
-            //        })
         }
     }
     

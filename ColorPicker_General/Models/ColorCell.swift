@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 
 class ColorCell: Identifiable {
+    var id: Int
     var r: Double
     var g: Double
     var b: Double
@@ -17,7 +18,8 @@ class ColorCell: Identifiable {
     var textColor: Color
     var shouldDelete: Bool
     
-    init(R: Double, G: Double, B: Double, h: String, tc: Color, ShouldDelete: Bool) {
+    init(ID: Int, R: Double, G: Double, B: Double, h: String, tc: Color, ShouldDelete: Bool) {
+        self.id = ID
         self.r = R
         self.g = G
         self.b = B
