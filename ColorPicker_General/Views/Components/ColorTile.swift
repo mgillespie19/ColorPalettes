@@ -9,19 +9,19 @@
 import SwiftUI
 
 struct ColorTile: View {
-    @State var show = false
-    @State var showDeleteButton = false
+    @State var expand = false
     
     var id: ColorTile { self }
     var backgroundColor: Color
     var foregroundColor: Color
     var hexID: String
+    @State var showDeleteButton: Bool
     
     var body: some View {
         ZStack(alignment: .topLeading) {
             Button(action: {
                 withAnimation {
-                    self.show.toggle()
+                    self.expand.toggle()
                 }
             }) {
                 VStack() {
@@ -33,7 +33,7 @@ struct ColorTile: View {
                         .frame(width: 175)
                 }
                 .padding()
-                .frame(width: show ? 175 : 175, height: show ? 365 : 175)
+                .frame(width: 175, height: expand ? 365 : 175)
                 .background(self.backgroundColor)
             }
             .cornerRadius(30)
@@ -58,6 +58,6 @@ struct ColorTile: View {
 
 struct ColorTile_Previews: PreviewProvider {
     static var previews: some View {
-        ColorTile(backgroundColor: Color.white, foregroundColor: Color.black, hexID: "FFFFFF")
+        ColorTile(backgroundColor: Color.white, foregroundColor: Color.black, hexID: "FFFFFF", showDeleteButton: true)
     }
 }

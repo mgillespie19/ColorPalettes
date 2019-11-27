@@ -9,23 +9,23 @@
 import SwiftUI
 
 struct PaletteView: View {
-    //    var allColors: [ColorRow] = [ColorRow(Color1: Color.white, Color2: Color.blue), ColorRow(Color1: Color.red, Color2: Color.black)]
     @ObservedObject var viewModel: PaletteViewModel
+    @State var editingMode = false
     
     var body: some View {
         VStack {
-            ScrollView(.vertical, showsIndicators: false) {
+            ScrollView(.vertical, showsIndicators: true) {
                 HStack {
                     VStack {
                         ForEach(self.viewModel.Rcolors) { c in
-                            ColorTile(backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex)
+                            ColorTile(backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.editingMode)
                         }
                     }
                     Spacer()
                     
                     VStack {
                         ForEach(self.viewModel.Lcolors) { c in
-                            ColorTile(backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex)
+                            ColorTile(backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.editingMode)
                         }
                     }
                     
