@@ -50,10 +50,10 @@ struct ColorTile: View {
                     self.viewModel.deleteColor(ID: self.id)
                 }
             }) {
-                Image(systemName: "minus.circle.fill")
+                Image(systemName: "minus.rectangle.fill")
                     .resizable()
-                    .offset(x:-15)
-                    .frame(width: showDeleteButton ? 65 : 0, height: showDeleteButton ? 65 : 0)
+                    .offset(x: -5)
+                    .frame(width: showDeleteButton ? 45 : 0, height: showDeleteButton ? 40 : 0)
                     .foregroundColor(.red)
             }
         }
