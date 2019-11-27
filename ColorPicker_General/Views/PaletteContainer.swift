@@ -15,15 +15,14 @@ struct PaletteContainer: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedView) {
-                PaletteView(viewModel: self.viewModel).tabItem {
-                    Text("Colors")
-                    Image(systemName: "paintbrush.fill")
-                }.tag(1)
-                    .navigationBarTitle("Palette 1 :)")
-                
                 ColorPicker(viewModel: self.viewModel).tabItem {
                     Text("RGB")
                     Image(systemName: "eyedropper.full")
+                }.tag(1)
+                
+                PaletteView(viewModel: self.viewModel).tabItem {
+                    Text("Colors")
+                    Image(systemName: "paintbrush.fill")
                 }.tag(2)
             }
         }
