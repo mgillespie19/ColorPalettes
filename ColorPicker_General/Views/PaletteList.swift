@@ -36,7 +36,7 @@ struct PaletteList: View {
                             })
                         }
                     }
-                .onDelete(perform: delete)
+                    .onDelete(perform: delete)
                 }
                 .navigationBarTitle("My Palettes")
                 .navigationBarItems(trailing: Button(action: {
@@ -54,16 +54,16 @@ struct PaletteList: View {
             .blur(radius: self.showNewPaletteAlert ? 4 : 0)
             .disabled(self.showNewPaletteAlert)
             .animation(.linear)
-
+            
             Alert(viewModel: self.viewModel, show: $showNewPaletteAlert, paletteName: newPaletteName)
                 .opacity(self.showNewPaletteAlert ? 1 : 0)
                 .offset(y: self.showNewPaletteAlert ? -100 : 500)
                 .animation(.easeInOut)
             
             Image("Palettes_Empty")
-            .resizable()
-            .frame(height: 500)
-            .padding()
+                .resizable()
+                .frame(height: 500)
+                .padding()
                 .opacity((viewModel.palettes.count > 0) || (self.showNewPaletteAlert) ? 0 : 1)
         }
     }

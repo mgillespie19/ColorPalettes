@@ -15,33 +15,40 @@ struct PaletteView: View {
     var body: some View {
         VStack {
             ScrollView(.vertical, showsIndicators: true) {
-                VStack (alignment: .trailing) {
+                VStack (alignment: .center) {
                     Text("edit")
                         .padding()
                         .foregroundColor(.blue)
                         .font(.headline)
-                        .frame(width: 100, height: 45)
+                        .frame(width: UIScreen.main.bounds.width - 40, height: 45)
                         .background(Color.white)
                         .cornerRadius(10)
                         .shadow(color: Color(red: 0.92, green: 0.92, blue: 0.92), radius: 10)
-                        .offset(x: -10)
                         .onTapGesture {
                             self.editingMode.toggle()
                     }
                     
-                    HStack {
-                        VStack {
-                            ForEach(self.viewModel.Rcolors) { c in
-                                ColorTile(id: c.id, backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.$editingMode, viewModel: self.viewModel)
+                    ZStack (alignment: .top) {
+                        HStack {
+                            VStack {
+                                ForEach(self.viewModel.Rcolors) { c in
+                                    ColorTile(id: c.id, backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.$editingMode, viewModel: self.viewModel)
+                                }
+                            }
+                            Spacer()
+                            
+                            VStack {
+                                ForEach(self.viewModel.Lcolors) { c in
+                                    ColorTile(id: c.id, backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.$editingMode, viewModel: self.viewModel)
+                                }
                             }
                         }
-                        Spacer()
                         
-                        VStack {
-                            ForEach(self.viewModel.Lcolors) { c in
-                                ColorTile(id: c.id, backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.$editingMode, viewModel: self.viewModel)
-                            }
-                        }
+                        Image("Colors_Empty")
+                        .resizable()
+                        .frame(height: 500)
+                        .padding()
+                        .opacity((viewModel.numColors() > 0) ? 0 : 1)
                     }
                 }
                 .padding(.leading)
