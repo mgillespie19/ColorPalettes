@@ -59,11 +59,17 @@ struct PaletteList: View {
                 .opacity(self.showNewPaletteAlert ? 1 : 0)
                 .offset(y: self.showNewPaletteAlert ? -100 : 500)
                 .animation(.easeInOut)
+            
+            Image("Palettes_Empty")
+            .resizable()
+            .frame(height: 500)
+            .padding()
+                .opacity((viewModel.palettes.count > 0) || (self.showNewPaletteAlert) ? 0 : 1)
         }
     }
     
     private func delete(with indexSet: IndexSet) {
-        if (indexSet != nil && indexSet.count > 0) {
+        if (indexSet.count > 0) {
             viewModel.deletePalette(atIndex: indexSet.first!)
         }
     }

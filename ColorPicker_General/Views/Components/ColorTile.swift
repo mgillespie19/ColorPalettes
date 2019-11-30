@@ -17,7 +17,7 @@ struct ColorTile: View {
     var backgroundColor: Color
     var foregroundColor: Color
     var hexID: String
-    @State var showDeleteButton: Bool
+    @Binding var showDeleteButton: Bool
     @ObservedObject var viewModel: PaletteViewModel
     
     var body: some View {
@@ -53,15 +53,17 @@ struct ColorTile: View {
                 Image(systemName: "minus.rectangle.fill")
                     .resizable()
                     .offset(x: -5)
-                    .frame(width: showDeleteButton ? 45 : 0, height: showDeleteButton ? 40 : 0)
+                    .frame(width: 35, height: 30)
+                    .opacity(showDeleteButton ? 1 : 0)
                     .foregroundColor(.red)
+                    .animation(.easeIn)
             }
         }
     }
 }
 
-struct ColorTile_Previews: PreviewProvider {
-    static var previews: some View {
-        ColorTile(id: 1, backgroundColor: Color.white, foregroundColor: Color.black, hexID: "FFFFFF", showDeleteButton: true, viewModel: PaletteViewModel(name: "Palette!"))
-    }
-}
+//struct ColorTile_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ColorTile(id: 1, backgroundColor: Color.white, foregroundColor: Color.black, hexID: "FFFFFF", showDeleteButton: true, viewModel: PaletteViewModel(name: "Palette!"))
+//    }
+//}

@@ -19,10 +19,11 @@ struct PaletteContainer: View {
                     Text("Colors")
                     Image(systemName: "paintbrush.fill")
                 }.tag(1)
+                    
                 
                 ColorPicker(viewModel: self.viewModel).tabItem {
                     Text("RGB")
-                    Image(systemName: "eyedropper.full")
+                    Image(systemName: "slider.horizontal.3")
                 }.tag(2)
             }
         }
