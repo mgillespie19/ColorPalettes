@@ -26,6 +26,8 @@ struct PaletteContainer: View {
                     Image(systemName: "slider.horizontal.3")
                 }.tag(2)
             }
+            .accentColor(Color.black)
+            .background(Color.clear)
         }
         .edgesIgnoringSafeArea(.top)
     }

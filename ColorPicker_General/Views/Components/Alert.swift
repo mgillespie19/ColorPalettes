@@ -30,6 +30,19 @@ struct Alert: View {
             HStack {
                 Spacer()
                 Button(action: {
+                    UIApplication.shared.windows[0].rootViewController?.dismiss(animated: true, completion: {})
+                    self.show.toggle()
+                    UIApplication.shared.endEditing()
+                }) {
+                    Text("Cancel")
+                        .foregroundColor(Color.red)
+                }
+                Spacer()
+
+                Divider()
+
+                Spacer()
+                Button(action: {
                     if (self.paletteName != "") {
                         self.viewModel.addPalette(newName: self.paletteName)
                     } else {
@@ -41,18 +54,7 @@ struct Alert: View {
                     self.paletteName = ""
                 }) {
                     Text("Done")
-                }
-                Spacer()
-
-                Divider()
-
-                Spacer()
-                Button(action: {
-                    UIApplication.shared.windows[0].rootViewController?.dismiss(animated: true, completion: {})
-                    self.show.toggle()
-                    UIApplication.shared.endEditing()
-                }) {
-                    Text("Cancel")
+                        .foregroundColor(Color.blue)
                 }
                 Spacer()
             }.padding(0)

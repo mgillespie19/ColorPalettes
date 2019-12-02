@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F612F1482375DA96009BA2EC /* ColorPicker_General.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorPicker_General.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F612F1482375DA96009BA2EC /* Palettes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Palettes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F612F14B2375DA96009BA2EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F612F14D2375DA96009BA2EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F612F1502375DA96009BA2EC /* ColorPicker_General.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ColorPicker_General.xcdatamodel; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		F612F1492375DA96009BA2EC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F612F1482375DA96009BA2EC /* ColorPicker_General.app */,
+				F612F1482375DA96009BA2EC /* Palettes.app */,
 				F612F1612375DA98009BA2EC /* ColorPicker_GeneralTests.xctest */,
 				F612F16C2375DA98009BA2EC /* ColorPicker_GeneralUITests.xctest */,
 			);
@@ -226,7 +226,7 @@
 			);
 			name = ColorPicker_General;
 			productName = ColorPicker_General;
-			productReference = F612F1482375DA96009BA2EC /* ColorPicker_General.app */;
+			productReference = F612F1482375DA96009BA2EC /* Palettes.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F612F1602375DA98009BA2EC /* ColorPicker_GeneralTests */ = {
@@ -528,7 +528,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Max-Gillespie.ColorPicker-General";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Palettes;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -548,7 +548,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Max-Gillespie.ColorPicker-General";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Palettes;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
