@@ -11,6 +11,7 @@ import SwiftUI
 struct ColorTile: View {
     // local variables
     @State var expand = false
+    @State var showEditWindow = false
     
     // instance variables
     var id: Int
@@ -44,25 +45,46 @@ struct ColorTile: View {
             .shadow(color: Color(red: 0.88, green: 0.88, blue: 0.88), radius: 10)
             .padding(.top)
             
-            Button(action: {
-                withAnimation {
-                    self.viewModel.deleteColor(ID: self.id)
+            HStack {
+                Button(action: {
+                    withAnimation {
+                        self.viewModel.deleteColor(ID: self.id)
+                    }
+                }) {
+                    Image(systemName: "minus.rectangle.fill")
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                        .opacity(showEditButtons ? 1 : 0)
+                        .foregroundColor(Color(UIColor.systemRed))
+                        .animation(.easeIn)
                 }
-            }) {
-                Image(systemName: "minus.rectangle.fill")
-                    .resizable()
-                    .offset(x: -5)
-                    .frame(width: 35, height: 35)
-                    .opacity(showEditButtons ? 1 : 0)
-                    .foregroundColor(Color(UIColor.systemRed))
-                    .animation(.easeIn)
+                
+                Spacer()
+                
+                Button(action: {
+                    self.showEditWindow.toggle()
+                }) {
+                    Image(systemName: "pencil.circle.fill")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .opacity(showEditButtons ? 1 : 0)
+                        .foregroundColor(Color(UIColor.systemGray))
+                        .animation(.easeIn)
+                }
             }
-        }
+            .frame(width: 185)
+            .offset(x: -5)
+        }.sheet(isPresented: $showEditWindow, content: {
+            EditColorView(backgroundColor: self.backgroundColor, foregroundColor: self.foregroundColor, hexID: self.hexID)
+        })
     }
 }
 
-//struct ColorTile_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ColorTile(id: 1, backgroundColor: Color.white, foregroundColor: Color.black, hexID: "FFFFFF", showDeleteButton: true, viewModel: PaletteViewModel(name: "Palette!"))
-//    }
-//}
+
+struct ColorTile_Previews: PreviewProvider {
+    @State static var showEdit = true
+    
+    static var previews: some View {
+        ColorTile(id: 1, backgroundColor: Color.white, foregroundColor: Color.black, hexID: "FFFFFF", showEditButtons: $showEdit, viewModel: PaletteViewModel(name: "Palette!"))
+    }
+}

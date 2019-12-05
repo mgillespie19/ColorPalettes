@@ -20,38 +20,7 @@ struct ColorPicker: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                Spacer()
-                HStack{
-                    Text("R: ")
-                        .font(.largeTitle)
-                        .foregroundColor(helper.evalTileFontColor(r: self.r, g: self.g, b: self.b))
-                    Slider(value: self.$r)
-                        .padding()
-                }.padding()
-                
-                HStack{
-                    Text("G: ")
-                        .font(.largeTitle)
-                        .foregroundColor(helper.evalTileFontColor(r: self.r, g: self.g, b: self.b))
-                    Slider(value: self.$g)
-                        .padding()
-                    
-                }.padding()
-                
-                HStack{
-                    Text("B: ")
-                        .font(.largeTitle)
-                        .foregroundColor(helper.evalTileFontColor(r: self.r, g: self.g, b: self.b))
-                    Slider(value: self.$b)
-                        .padding()
-                }.padding()
-                
-                Spacer()
-            }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-            .background(Color(red: self.r, green: self.g, blue: self.b))
-            .edgesIgnoringSafeArea(.all)
+            ColorSelectionView(r: $r, g: $g, b: $b, helper: helper)
             
             Image(systemName: "plus.square")
                 .resizable()
