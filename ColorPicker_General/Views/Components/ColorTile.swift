@@ -17,7 +17,7 @@ struct ColorTile: View {
     var backgroundColor: Color
     var foregroundColor: Color
     var hexID: String
-    @Binding var showDeleteButton: Bool
+    @Binding var showEditButtons: Bool
     @ObservedObject var viewModel: PaletteViewModel
     
     var body: some View {
@@ -27,17 +27,17 @@ struct ColorTile: View {
                     self.expand.toggle()
                 }
             }) {
-                VStack() {
-                    Spacer()
-                    Text (hexID)
-                        .foregroundColor(self.foregroundColor)
-                        .font(.headline)
-                        .fontWeight(.light)
-                        .frame(width: 175)
-                }
-                .padding()
-                .frame(width: 175, height: expand ? 365 : 175)
-                .background(self.backgroundColor)
+                    VStack() {
+                        Spacer()
+                        Text (hexID)
+                            .foregroundColor(self.foregroundColor)
+                            .font(.headline)
+                            .fontWeight(.light)
+                            .frame(width: 175)
+                    }
+                    .padding()
+                    .frame(width: 175, height: expand ? 365 : 175)
+                    .background(self.backgroundColor)
             }
             .cornerRadius(30)
             .animation(.spring())
@@ -46,16 +46,15 @@ struct ColorTile: View {
             
             Button(action: {
                 withAnimation {
-                    self.showDeleteButton.toggle()
                     self.viewModel.deleteColor(ID: self.id)
                 }
             }) {
                 Image(systemName: "minus.rectangle.fill")
                     .resizable()
                     .offset(x: -5)
-                    .frame(width: 35, height: 30)
-                    .opacity(showDeleteButton ? 1 : 0)
-                    .foregroundColor(.red)
+                    .frame(width: 35, height: 35)
+                    .opacity(showEditButtons ? 1 : 0)
+                    .foregroundColor(Color(UIColor.systemRed))
                     .animation(.easeIn)
             }
         }

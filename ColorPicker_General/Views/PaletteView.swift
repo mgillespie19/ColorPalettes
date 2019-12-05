@@ -32,14 +32,14 @@ struct PaletteView: View {
                         HStack {
                             VStack {
                                 ForEach(self.viewModel.Rcolors) { c in
-                                    ColorTile(id: c.id, backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.$editingMode, viewModel: self.viewModel)
+                                    ColorTile(id: c.id, backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showEditButtons: self.$editingMode, viewModel: self.viewModel)
                                 }
                             }
                             Spacer()
                             
                             VStack {
                                 ForEach(self.viewModel.Lcolors) { c in
-                                    ColorTile(id: c.id, backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showDeleteButton: self.$editingMode, viewModel: self.viewModel)
+                                    ColorTile(id: c.id, backgroundColor: Color(red: c.r, green: c.g, blue: c.b), foregroundColor: c.textColor, hexID: c.hex, showEditButtons: self.$editingMode, viewModel: self.viewModel)
                                 }
                             }
                         }

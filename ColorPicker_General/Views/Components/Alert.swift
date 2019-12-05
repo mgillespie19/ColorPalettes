@@ -35,7 +35,7 @@ struct Alert: View {
                     UIApplication.shared.endEditing()
                 }) {
                     Text("Cancel")
-                        .foregroundColor(Color.red)
+                        .foregroundColor(Color(UIColor.systemRed))
                 }
                 Spacer()
 
@@ -54,7 +54,7 @@ struct Alert: View {
                     self.paletteName = ""
                 }) {
                     Text("Done")
-                        .foregroundColor(Color.blue)
+                        .foregroundColor(Color(UIColor.systemBlue))
                 }
                 Spacer()
             }.padding(0)
