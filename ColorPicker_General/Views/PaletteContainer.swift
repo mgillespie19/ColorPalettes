@@ -21,7 +21,7 @@ struct PaletteContainer: View {
                 }.tag(1)
                     
                 
-                ColorPicker(viewModel: self.viewModel).tabItem {
+                ColorPicker(viewModel: self.viewModel, helper: Helper()).tabItem {
                     Text("RGB")
                     Image(systemName: "slider.horizontal.3")
                 }.tag(2)

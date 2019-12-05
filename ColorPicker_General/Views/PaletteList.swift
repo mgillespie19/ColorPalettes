@@ -47,6 +47,7 @@ struct PaletteList: View {
                             .resizable()
                             .frame(width: 30, height: 30)
                             .padding(.top)
+                            .padding(.bottom)
                 })
                 )
                 

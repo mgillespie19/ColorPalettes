@@ -9,9 +9,9 @@
 import Foundation
 import SwiftUI
 
-class Helpers {
+class Helper {
     func evalTileFontColor(r: Double, g: Double, b: Double) -> Color {
-        if ((r + g + b) > 2.2) {
+        if ((r + g + b) > 1.9) {
             return Color.black
         }
         return Color.white

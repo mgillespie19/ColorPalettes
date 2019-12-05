@@ -12,10 +12,11 @@ struct ColorPicker: View {
     @ObservedObject var viewModel: PaletteViewModel
     
     @State var show = false
-    @State var textColorToggle = false
     @State var r: Double = 1
     @State var g: Double = 1
     @State var b: Double = 1
+    
+    var helper: Helper
     
     var body: some View {
         ZStack {
@@ -24,7 +25,7 @@ struct ColorPicker: View {
                 HStack{
                     Text("R: ")
                         .font(.largeTitle)
-                        .foregroundColor(textColorToggle ? Color.white : Color.black)
+                        .foregroundColor(helper.evalTileFontColor(r: self.r, g: self.g, b: self.b))
                     Slider(value: self.$r)
                         .padding()
                 }.padding()
@@ -32,7 +33,7 @@ struct ColorPicker: View {
                 HStack{
                     Text("G: ")
                         .font(.largeTitle)
-                        .foregroundColor(textColorToggle ? Color.white : Color.black)
+                        .foregroundColor(helper.evalTileFontColor(r: self.r, g: self.g, b: self.b))
                     Slider(value: self.$g)
                         .padding()
                     
@@ -41,7 +42,7 @@ struct ColorPicker: View {
                 HStack{
                     Text("B: ")
                         .font(.largeTitle)
-                        .foregroundColor(textColorToggle ? Color.white : Color.black)
+                        .foregroundColor(helper.evalTileFontColor(r: self.r, g: self.g, b: self.b))
                     Slider(value: self.$b)
                         .padding()
                 }.padding()
@@ -57,7 +58,7 @@ struct ColorPicker: View {
                 .frame(width: 85, height: 85)
                 .rotationEffect(show ? Angle(degrees: 180) : Angle(degrees: -180))
                 .animation(.spring())
-                .foregroundColor(textColorToggle ? Color.white : Color.black)
+                .foregroundColor(helper.evalTileFontColor(r: self.r, g: self.g, b: self.b))
                 .padding()
                 .offset(y: 200)
                 .onTapGesture {
@@ -70,6 +71,6 @@ struct ColorPicker: View {
 
 struct ColorPicker_Previews: PreviewProvider {
     static var previews: some View {
-        ColorPicker(viewModel: PaletteViewModel(name: "New Palette"))
+        ColorPicker(viewModel: PaletteViewModel(name: "New Palette"), helper: Helper())
     }
 }

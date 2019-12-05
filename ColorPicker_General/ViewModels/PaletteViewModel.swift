@@ -33,7 +33,7 @@ class PaletteViewModel: Identifiable, ObservableObject {
         let r_str = String(format:"%02X", Int(r * 255))
         let g_str = String(format:"%02X", Int(g * 255))
         let b_str = String(format:"%02X", Int(b * 255))
-        let helper = Helpers()
+        let helper = Helper()
         
         if (Rcolors.count <= Lcolors.count) {
             Rcolors.append(ColorCell(ID: idCounter, R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b), ShouldDelete: false))

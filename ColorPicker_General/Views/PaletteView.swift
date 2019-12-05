@@ -18,7 +18,7 @@ struct PaletteView: View {
                 VStack (alignment: .center) {
                     Text("edit")
                         .padding()
-                        .foregroundColor(.blue)
+                        .foregroundColor(.black)
                         .font(.headline)
                         .frame(width: UIScreen.main.bounds.width - 40, height: 45)
                         .background(Color.white)
