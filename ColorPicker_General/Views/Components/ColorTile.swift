@@ -13,9 +13,12 @@ struct ColorTile: View {
     @State var expand = false
     @State var showEditWindow = false
     
+    
     // instance variables
     var id: Int
-    var backgroundColor: Color
+    @State var r: Double = 1
+    @State var g: Double = 1
+    @State var b: Double = 1
     var foregroundColor: Color
     var hexID: String
     @Binding var showEditButtons: Bool
@@ -37,8 +40,8 @@ struct ColorTile: View {
                             .frame(width: 175)
                     }
                     .padding()
-                    .frame(width: 175, height: expand ? 365 : 175)
-                    .background(self.backgroundColor)
+                    .frame(width: 165, height: expand ? 365 : 165)
+                    .background(Color(red: self.r, green: self.g, blue: self.b))
             }
             .cornerRadius(30)
             .animation(.spring())
@@ -74,8 +77,9 @@ struct ColorTile: View {
             }
             .frame(width: 185)
             .offset(x: -5)
-        }.sheet(isPresented: $showEditWindow, content: {
-            EditColorView(backgroundColor: self.backgroundColor, foregroundColor: self.foregroundColor, hexID: self.hexID)
+        }
+        .sheet(isPresented: $showEditWindow, content: {
+            EditColorView(foregroundColor: self.foregroundColor, hexID: self.hexID, r: self.$r, g: self.$g, b: self.$b)
         })
     }
 }
@@ -85,6 +89,6 @@ struct ColorTile_Previews: PreviewProvider {
     @State static var showEdit = true
     
     static var previews: some View {
-        ColorTile(id: 1, backgroundColor: Color.white, foregroundColor: Color.black, hexID: "FFFFFF", showEditButtons: $showEdit, viewModel: PaletteViewModel(name: "Palette!"))
+        ColorTile(id: 1,foregroundColor: Color.black, hexID: "FFFFFF", showEditButtons: $showEdit, viewModel: PaletteViewModel(name: "Palette!"))
     }
 }

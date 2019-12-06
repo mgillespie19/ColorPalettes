@@ -9,21 +9,26 @@
 import SwiftUI
 
 struct EditColorView: View {
-    var backgroundColor: Color
     var foregroundColor: Color
     var hexID: String
     
+    @Binding var r: Double
+    @Binding var g: Double
+    @Binding var b: Double
+    
     var body: some View {
         VStack {
-            Text("Edit Color!")
-                .foregroundColor(foregroundColor)
+            ColorSelectionView(r: $r, g: $g, b: $b, helper: Helper())
         }
-        .background(backgroundColor)
     }
 }
 
 struct EditColorView_Previews: PreviewProvider {
+    @State static var r: Double = 0
+    @State static var g: Double = 0
+    @State static var b: Double = 0
+    
     static var previews: some View {
-        EditColorView(backgroundColor: Color.white, foregroundColor: Color.black, hexID: "000000")
+        EditColorView(foregroundColor: Color.black, hexID: "000000", r: $r, g: $g, b:$b)
     }
 }

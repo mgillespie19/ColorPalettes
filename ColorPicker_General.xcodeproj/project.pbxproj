@@ -207,10 +207,10 @@
 		F6E22672237CD15900EC2D1E /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				F612F1812375E068009BA2EC /* ColorTile.swift */,
 				F6A119742399CBC900DBCE18 /* EditColorView.swift */,
-				F64FAD01238CA0B7006CB02C /* Alert.swift */,
 				F6A119762399CE4500DBCE18 /* ColorSelectionView.swift */,
+				F612F1812375E068009BA2EC /* ColorTile.swift */,
+				F64FAD01238CA0B7006CB02C /* Alert.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
