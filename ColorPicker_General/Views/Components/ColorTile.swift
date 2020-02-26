@@ -64,16 +64,16 @@ struct ColorTile: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    self.showEditWindow.toggle()
-                }) {
-                    Image(systemName: "pencil.circle.fill")
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                        .opacity(showEditButtons ? 1 : 0)
-                        .foregroundColor(Color(UIColor.systemGray))
-                        .animation(.easeIn)
-                }
+//                Button(action: {
+//                    self.showEditWindow.toggle()
+//                }) {
+//                    Image(systemName: "pencil.circle.fill")
+//                        .resizable()
+//                        .frame(width: 40, height: 40)
+//                        .opacity(showEditButtons ? 1 : 0)
+//                        .foregroundColor(Color(UIColor.systemGray))
+//                        .animation(.easeIn)
+//                }
             }
             .frame(width: 185)
             .offset(x: -5)
