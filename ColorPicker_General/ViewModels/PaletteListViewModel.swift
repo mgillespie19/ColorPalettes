@@ -30,7 +30,7 @@ class PaletteListViewmodel: ObservableObject {
             
             var paletteIndex = 0
             localPalettes.keys.forEach { paletteName in
-                self.palettes.append(PaletteViewModel(name: paletteName))
+                self.palettes.append(PaletteViewModel(name: paletteName, parentVM: self))
                 
                 localPalettes[paletteName]?.forEach { color in
                     self.palettes[paletteIndex].addColor(r: color.r, g: color.g, b: color.b)
@@ -51,7 +51,7 @@ class PaletteListViewmodel: ObservableObject {
     
     func addPalette(newName: String) {
         print("adding palette!")
-        self.palettes.append(PaletteViewModel(name: newName))
+        self.palettes.append(PaletteViewModel(name: newName, parentVM: self))
         
         uploadPalettes()
     }
@@ -80,6 +80,8 @@ class PaletteListViewmodel: ObservableObject {
                 paletteArchive[palette.PaletteName]?.append(color)
             }
         }
+        
+        print("paletteArchive: \(paletteArchive)")
         
         let paletteData = NSKeyedArchiver.archivedData(withRootObject: paletteArchive)
         self.defaults.set(paletteData, forKey: "palettes")

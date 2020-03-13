@@ -12,17 +12,21 @@ import UIKit
 import SwiftUI
 
 class PaletteViewModel: Identifiable, ObservableObject {
+    
+    var PaletteName: String
+    var parentViewModel: PaletteListViewmodel
+    
     @Published private(set) var Rcolors: [ColorCell] = []
     @Published private(set) var Lcolors: [ColorCell] = []
     var idCounter = 0
-    var PaletteName: String
     
     private var TAG = "PVM:"
     private var cancellable: AnyCancellable?
     
-    init(name: String) {
+    init(name: String, parentVM: PaletteListViewmodel) {
         print(TAG, "init called")
         PaletteName = name
+        parentViewModel = parentVM
     }
     
     deinit {
@@ -42,6 +46,8 @@ class PaletteViewModel: Identifiable, ObservableObject {
         }
         
         idCounter += 1
+        
+        self.parentViewModel.uploadPalettes()
     }
     
     func editPalette() {

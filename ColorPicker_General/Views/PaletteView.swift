@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct PaletteView: View {
+    
     @ObservedObject var viewModel: PaletteViewModel
     @State var editingMode = false
     
@@ -63,6 +64,6 @@ struct PaletteView: View {
 
 struct AllColors_Previews: PreviewProvider {
     static var previews: some View {
-        PaletteView(viewModel: PaletteViewModel(name: "Palette"))
+        PaletteView(viewModel: PaletteViewModel(name: "Palette", parentVM: PaletteListViewmodel()))
     }
 }

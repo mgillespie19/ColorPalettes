@@ -40,6 +40,6 @@ struct ColorPicker: View {
 
 struct ColorPicker_Previews: PreviewProvider {
     static var previews: some View {
-        ColorPicker(viewModel: PaletteViewModel(name: "New Palette"), helper: Helper())
+        ColorPicker(viewModel: PaletteViewModel(name: "New Palette", parentVM: PaletteListViewmodel()), helper: Helper())
     }
 }

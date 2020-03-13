@@ -89,6 +89,6 @@ struct ColorTile_Previews: PreviewProvider {
     @State static var showEdit = true
     
     static var previews: some View {
-        ColorTile(id: 1,foregroundColor: Color.black, hexID: "FFFFFF", showEditButtons: $showEdit, viewModel: PaletteViewModel(name: "Palette!"))
+        ColorTile(id: 1,foregroundColor: Color.black, hexID: "FFFFFF", showEditButtons: $showEdit, viewModel: PaletteViewModel(name: "Palette!", parentVM: PaletteListViewmodel()))
     }
 }

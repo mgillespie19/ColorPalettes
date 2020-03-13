@@ -35,6 +35,6 @@ struct PaletteContainer: View {
 
 struct PaletteContainer_Previews: PreviewProvider {
     static var previews: some View {
-        PaletteContainer(viewModel: PaletteViewModel(name: "New Palette"))
+        PaletteContainer(viewModel: PaletteViewModel(name: "New Palette", parentVM: PaletteListViewmodel()))
     }
 }
