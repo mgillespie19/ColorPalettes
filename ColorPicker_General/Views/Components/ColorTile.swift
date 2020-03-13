@@ -9,10 +9,6 @@
 import SwiftUI
 
 struct ColorTile: View {
-    // local variables
-    @State var expand = false
-    @State var showEditWindow = false
-    
     
     // instance variables
     var id: Int
@@ -23,6 +19,10 @@ struct ColorTile: View {
     var hexID: String
     @Binding var showEditButtons: Bool
     @ObservedObject var viewModel: PaletteViewModel
+    
+    // local variables
+    @State var expand = false
+    @State var showEditWindow = false
     
     var body: some View {
         ZStack(alignment: .topLeading) {

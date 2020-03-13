@@ -59,6 +59,8 @@ class PaletteViewModel: Identifiable, ObservableObject {
             if (Rcolors[i].id == ID) {
                 print(TAG, "deleting color from right side...")
                 Rcolors.remove(at: i)
+                
+                self.parentViewModel.uploadPalettes()
                 return
             }
         }
@@ -66,6 +68,8 @@ class PaletteViewModel: Identifiable, ObservableObject {
             if (Lcolors[i].id == ID) {
                 print(TAG, "deleting color from left side...")
                 Lcolors.remove(at: i)
+                
+                self.parentViewModel.uploadPalettes()
                 return
             }
         }
