@@ -535,10 +535,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Max-Gillespie.ColorPicker-General";
+				PRODUCT_BUNDLE_IDENTIFIER = "Max-Gillespie.ColorPicker";
 				PRODUCT_NAME = Palettes;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -555,10 +555,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Max-Gillespie.ColorPicker-General";
+				PRODUCT_BUNDLE_IDENTIFIER = "Max-Gillespie.ColorPicker";
 				PRODUCT_NAME = Palettes;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
