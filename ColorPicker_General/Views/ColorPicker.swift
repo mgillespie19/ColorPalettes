@@ -33,6 +33,9 @@ struct ColorPicker: View {
                 .onTapGesture {
                     self.viewModel.addColor(r: self.r, g: self.g, b: self.b)
                     self.show.toggle()
+                    
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
             }
         }
     }
