@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-class ColorCell: NSObject, NSCoding, Identifiable {
+class ColorCell: NSObject, NSCoding, Identifiable, Comparable {
     
     // MARK:- Local variables
     var id: Int!
@@ -67,4 +67,10 @@ class ColorCell: NSObject, NSCoding, Identifiable {
 //        coder.encode(self.shouldDelete, forKey: "shouldDelete")
     }
 
+    static func < (lhs: ColorCell, rhs: ColorCell) -> Bool {
+        let lhsSum = lhs.r + lhs.g + lhs.b
+        let rhsSum = rhs.r + rhs.g + rhs.b
+        
+        return lhsSum <= rhsSum
+    }
 }

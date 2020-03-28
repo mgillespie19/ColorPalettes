@@ -29,10 +29,8 @@ struct PaletteList: View {
                                 self.showPaletteDetail.toggle()
                                 self.selectedPalette = palette
                             }, label: {
-                                Text(palette.PaletteName)
-                                    .font(.title)
-                                    .padding(.top)
-                                    .padding(.bottom)
+                                PaletteListItem(palette: palette)
+                                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                             })
                         }
                     }

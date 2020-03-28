@@ -82,4 +82,30 @@ class PaletteViewModel: Identifiable, ObservableObject {
     func cancel() {
         cancellable?.cancel()
     }
+    
+    func sortColorsAscending() -> [ColorCell] {
+        var returnList: [ColorCell] = []
+        
+        for color in Rcolors {
+            returnList.append(color)
+        }
+        for color in Lcolors {
+            returnList.append(color)
+        }
+        
+        return returnList.sorted(by: >)
+    }
+    
+    func sortColorsDescending() -> [ColorCell] {
+        var returnList: [ColorCell] = []
+        
+        for color in Rcolors {
+            returnList.append(color)
+        }
+        for color in Lcolors {
+            returnList.append(color)
+        }
+        
+        return returnList.sorted(by: <)
+    }
 }
