@@ -12,6 +12,7 @@ struct ColorPicker: View {
     @ObservedObject var viewModel: PaletteViewModel
     
     @State var show = false
+    @State var showCurrentPalette = false
     @State var r: Double = 1
     @State var g: Double = 1
     @State var b: Double = 1
@@ -21,6 +22,8 @@ struct ColorPicker: View {
     var body: some View {
         ZStack {
             ColorSelectionView(r: $r, g: $g, b: $b, helper: helper)
+            
+            CurrentPaletteDisplay(viewModel: self.viewModel, showCurrentPalette: $showCurrentPalette)
             
             Image(systemName: "plus.square")
                 .resizable()

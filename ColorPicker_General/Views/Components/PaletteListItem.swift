@@ -9,17 +9,15 @@
 import SwiftUI
 
 struct PaletteListItem: View {
+    
     var palette: PaletteViewModel
+    
     @State var paletteColors: [ColorCell] = []
     
     var body: some View {
         ZStack (alignment: .topTrailing) {
             HStack {
-                ForEach(paletteColors) { color in
-                    Rectangle().foregroundColor(Color(red: color.r, green: color.g, blue: color.b))
-                        .cornerRadius(4)
-                        .shadow(color: Color(red: 0.92, green: 0.92, blue: 0.92), radius: 2, x: 0, y: 0)
-                }
+                CurrentPaletteView(paletteColors: $paletteColors)
             }
             .frame(width: UIScreen.main.bounds.width * 0.88)
             

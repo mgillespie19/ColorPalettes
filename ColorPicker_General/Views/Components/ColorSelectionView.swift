@@ -18,30 +18,42 @@ struct ColorSelectionView: View {
     var body: some View {
         VStack {
             Spacer()
+            
             HStack{
                 Text("R: ")
                     .font(.largeTitle)
                     .foregroundColor(helper.evalTileFontColor(r: self.r, g: self.g, b: self.b))
                 Slider(value: self.$r)
-                    .padding()
-            }.padding()
+//                    .padding()
+            }
+            .padding(.leading)
+            .padding(.trailing)
+            .padding(.top)
+            .padding(.bottom)
             
             HStack{
                 Text("G: ")
                     .font(.largeTitle)
                     .foregroundColor(helper.evalTileFontColor(r: self.r, g: self.g, b: self.b))
                 Slider(value: self.$g)
-                    .padding()
+//                    .padding()
                 
-            }.padding()
+            }
+            .padding(.leading)
+            .padding(.trailing)
+            .padding(.top)
+            .padding(.bottom)
             
             HStack{
                 Text("B: ")
                     .font(.largeTitle)
                     .foregroundColor(helper.evalTileFontColor(r: self.r, g: self.g, b: self.b))
                 Slider(value: self.$b)
-                    .padding()
-            }.padding()
+//                    .padding()
+            }
+            .padding(.leading)
+            .padding(.trailing)
+            .padding(.top)
             
             Spacer()
         }

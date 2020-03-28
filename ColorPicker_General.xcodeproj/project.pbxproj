@@ -23,6 +23,8 @@
 		F6A119752399CBC900DBCE18 /* EditColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A119742399CBC900DBCE18 /* EditColorView.swift */; };
 		F6A119772399CE4500DBCE18 /* ColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A119762399CE4500DBCE18 /* ColorSelectionView.swift */; };
 		F6A5D13223771C7A005D3D56 /* PaletteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A5D13123771C7A005D3D56 /* PaletteViewModel.swift */; };
+		F6C7855C242FC86B003178F9 /* CurrentPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7855B242FC86B003178F9 /* CurrentPaletteView.swift */; };
+		F6C7855E242FC91E003178F9 /* CurrentPaletteDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7855D242FC91E003178F9 /* CurrentPaletteDisplay.swift */; };
 		F6E22667237C702600EC2D1E /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E22666237C702600EC2D1E /* Helper.swift */; };
 		F6E22669237C902F00EC2D1E /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E22668237C902F00EC2D1E /* PaletteView.swift */; };
 		F6E2266B237C906400EC2D1E /* PaletteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E2266A237C906400EC2D1E /* PaletteList.swift */; };
@@ -71,6 +73,8 @@
 		F6A119742399CBC900DBCE18 /* EditColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditColorView.swift; sourceTree = "<group>"; };
 		F6A119762399CE4500DBCE18 /* ColorSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionView.swift; sourceTree = "<group>"; };
 		F6A5D13123771C7A005D3D56 /* PaletteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteViewModel.swift; sourceTree = "<group>"; };
+		F6C7855B242FC86B003178F9 /* CurrentPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPaletteView.swift; sourceTree = "<group>"; };
+		F6C7855D242FC91E003178F9 /* CurrentPaletteDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPaletteDisplay.swift; sourceTree = "<group>"; };
 		F6E22666237C702600EC2D1E /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		F6E22668237C902F00EC2D1E /* PaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
 		F6E2266A237C906400EC2D1E /* PaletteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteList.swift; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 				F6A119762399CE4500DBCE18 /* ColorSelectionView.swift */,
 				F612F1812375E068009BA2EC /* ColorTile.swift */,
 				F64FAD01238CA0B7006CB02C /* Alert.swift */,
+				F6C7855B242FC86B003178F9 /* CurrentPaletteView.swift */,
+				F6C7855D242FC91E003178F9 /* CurrentPaletteDisplay.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -349,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6C7855E242FC91E003178F9 /* CurrentPaletteDisplay.swift in Sources */,
 				F6E2266D237C939500EC2D1E /* PaletteListViewModel.swift in Sources */,
 				F6A5D13223771C7A005D3D56 /* PaletteViewModel.swift in Sources */,
 				F6A119752399CBC900DBCE18 /* EditColorView.swift in Sources */,
@@ -365,6 +372,7 @@
 				F6E22671237C9B8A00EC2D1E /* PaletteContainer.swift in Sources */,
 				F6E2266B237C906400EC2D1E /* PaletteList.swift in Sources */,
 				F6E2266F237C96E800EC2D1E /* ColorCell.swift in Sources */,
+				F6C7855C242FC86B003178F9 /* CurrentPaletteView.swift in Sources */,
 				F612F1512375DA96009BA2EC /* ColorPicker_General.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
