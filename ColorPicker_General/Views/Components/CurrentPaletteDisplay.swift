@@ -38,7 +38,7 @@ struct CurrentPaletteDisplay: View {
             .padding()
             
             VStack {
-                CurrentPaletteView(paletteColors: $paletteColors, showShadow: false)
+                CurrentPaletteView(paletteColors: $paletteColors, showBorder: true)
             }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.leading)

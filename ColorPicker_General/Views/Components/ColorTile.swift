@@ -18,6 +18,8 @@ struct ColorTile: View {
     var foregroundColor: Color
     var hexID: String
     @Binding var showEditButtons: Bool
+    @State var showEditButton = false
+    @State var showDeleteColorAlert = false
     @ObservedObject var viewModel: PaletteViewModel
     
     // local variables
@@ -25,55 +27,63 @@ struct ColorTile: View {
     @State var showEditWindow = false
     
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            Button(action: {
+        ZStack(alignment: .top) {
+            VStack() {
+                Spacer()
+                Text (hexID)
+                    .foregroundColor(self.foregroundColor)
+                    .font(.headline)
+                    .fontWeight(.light)
+                .frame(width: UIScreen.main.bounds.width * 0.43)
+            }
+            .padding()
+            .frame(width: UIScreen.main.bounds.width * 0.43, height: expand ? 365 : 165)
+            .background(Color(red: self.r, green: self.g, blue: self.b))
+            .cornerRadius(5)
+            .animation(.spring())
+            .shadow(color: Color(red: 0.94, green: 0.94, blue: 0.94), radius: 8)
+            .padding(.bottom)
+            .onTapGesture {
                 withAnimation {
                     self.expand.toggle()
                 }
-            }) {
-                    VStack() {
-                        Spacer()
-                        Text (hexID)
-                            .foregroundColor(self.foregroundColor)
-                            .font(.headline)
-                            .fontWeight(.light)
-                            .frame(width: 175)
-                    }
-                    .padding()
-                    .frame(width: 165, height: expand ? 365 : 165)
-                    .background(Color(red: self.r, green: self.g, blue: self.b))
             }
-            .cornerRadius(30)
-            .animation(.spring())
-            .shadow(color: Color(red: 0.88, green: 0.88, blue: 0.88), radius: 10)
-            .padding(.top)
+            .onLongPressGesture {
+//                self.showEditButtons.toggle()
+                self.showDeleteColorAlert.toggle()
+                
+                let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.impactOccurred()
+            }
             
             HStack {
+                Spacer()
+                
                 Button(action: {
                     withAnimation {
                         self.viewModel.deleteColor(ID: self.id)
                     }
                 }) {
-                    Image(systemName: "minus.rectangle.fill")
-                        .resizable()
-                        .frame(width: 35, height: 35)
-                        .opacity(showEditButtons ? 1 : 0)
-                        .foregroundColor(Color(UIColor.systemRed))
+                    Text("DELETE")
+                        .padding(.leading)
+                        .padding(.trailing)
+                        .frame(height: 40)
+                        .foregroundColor(.white)
+                        .background(Color(UIColor.systemRed))
+                        .cornerRadius(20)
+                        .opacity(showEditButton ? 1 : 0)
                         .animation(.easeIn)
+                        .offset(x: 5, y:5)
+                    
+//                    Image(systemName: "minus.rectangle.fill")
+//                        .resizable()
+//                        .frame(width: 35, height: 35)
+//                        .opacity(showEditButtons ? 1 : 0)
+//                        .foregroundColor(Color(UIColor.systemRed))
+//                        .animation(.easeIn)
                 }
                 
                 Spacer()
-                
-//                Button(action: {
-//                    self.showEditWindow.toggle()
-//                }) {
-//                    Image(systemName: "pencil.circle.fill")
-//                        .resizable()
-//                        .frame(width: 40, height: 40)
-//                        .opacity(showEditButtons ? 1 : 0)
-//                        .foregroundColor(Color(UIColor.systemGray))
-//                        .animation(.easeIn)
-//                }
             }
             .frame(width: 185)
             .offset(x: -5)
@@ -81,6 +91,11 @@ struct ColorTile: View {
         .sheet(isPresented: $showEditWindow, content: {
             EditColorView(foregroundColor: self.foregroundColor, hexID: self.hexID, r: self.$r, g: self.$g, b: self.$b)
         })
+        .alert(isPresented: $showDeleteColorAlert) {
+            Alert(title: Text("Delete color?"), message: Text("You can't undo this action"), primaryButton: .destructive(Text("Delete")) {
+                    self.viewModel.deleteColor(ID: self.id)
+            }, secondaryButton: .cancel())
+        }
     }
 }
 

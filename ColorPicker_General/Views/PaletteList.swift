@@ -18,52 +18,49 @@ struct PaletteList: View {
     @State var selectedPalette: PaletteViewModel?
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             NavigationView {
-                List {
-                    ForEach(viewModel.palettes) { palette in
-                        NavigationLink (destination:
-                            PaletteContainer(viewModel: palette)
-                        ) {
-                            Button(action:  {
-                                self.showPaletteDetail.toggle()
-                                self.selectedPalette = palette
-                            }, label: {
-                                PaletteListItem(palette: palette)
-                                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                            })
+                ZStack(alignment: .bottom) {
+                    List {
+                        ForEach(viewModel.palettes) { palette in
+                            NavigationLink (destination:
+                                PaletteContainer(viewModel: palette)
+                            ) {
+                                Button(action:  {
+                                    self.showPaletteDetail.toggle()
+                                    self.selectedPalette = palette
+                                }, label: {
+                                    PaletteListItem(palette: palette)
+                                        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                })
+                            }
                         }
+                        .onDelete(perform: delete)
                     }
-                    .onDelete(perform: delete)
+                    .navigationBarTitle("My Palettes")
+                    .navigationBarItems(trailing: Button(action: {
+                        self.showNewPaletteAlert.toggle()
+                    }
+                        , label: {
+                            Image(systemName: "plus")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .padding(.top)
+                                .padding(.bottom)
+                                .foregroundColor(.black)
+                    })
+                    )
+                    
+                    Text("© 2020 MAX GILLESPIE")
                 }
-                .navigationBarTitle("My Palettes")
-                .navigationBarItems(trailing: Button(action: {
-                    self.showNewPaletteAlert.toggle()
-                }
-                    , label: {
-                        Image(systemName: "plus")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .padding(.top)
-                            .padding(.bottom)
-                })
-                )
-                
-            }
-            .blur(radius: self.showNewPaletteAlert ? 4 : 0)
+            }.blur(radius: self.showNewPaletteAlert ? 4 : 0)
             .disabled(self.showNewPaletteAlert)
             .animation(.linear)
             
-            Alert(viewModel: self.viewModel, show: $showNewPaletteAlert, paletteName: newPaletteName)
-                .opacity(self.showNewPaletteAlert ? 1 : 0)
-                .offset(y: self.showNewPaletteAlert ? -100 : 500)
-                .animation(.easeInOut)
-            
-            Image("Palettes_Empty")
-                .resizable()
-                .frame(height: 500)
-                .padding()
-                .opacity((viewModel.palettes.count > 0) || (self.showNewPaletteAlert) ? 0 : 1)
+            PaintChipsAlert(viewModel: self.viewModel, show: $showNewPaletteAlert, paletteName: newPaletteName)
+            .opacity(self.showNewPaletteAlert ? 1 : 0)
+            .offset(y: self.showNewPaletteAlert ? -(UIScreen.main.bounds.height / 2) : 200)
+            .animation(.easeInOut)
         }
     }
     

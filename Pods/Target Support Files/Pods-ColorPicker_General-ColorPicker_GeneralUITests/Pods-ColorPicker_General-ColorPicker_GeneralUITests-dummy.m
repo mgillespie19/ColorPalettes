@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_ColorPicker_General_ColorPicker_GeneralUITests : NSObject
+@end
+@implementation PodsDummy_Pods_ColorPicker_General_ColorPicker_GeneralUITests
+@end

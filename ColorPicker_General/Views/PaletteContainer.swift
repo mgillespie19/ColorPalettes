@@ -20,16 +20,19 @@ struct PaletteContainer: View {
                     Image(systemName: "paintbrush.fill")
                 }.tag(1)
                     
-                
                 ColorPicker(viewModel: self.viewModel, helper: Helper()).tabItem {
                     Text("RGB")
                     Image(systemName: "slider.horizontal.3")
                 }.tag(2)
+                
+//                InteractionView(viewModel: self.viewModel).tabItem {
+//                    Text("Interactions")
+//                    Image(systemName: "rectangle.3.offgrid")
+//                }.tag(3)
             }
             .accentColor(Color.black)
             .background(Color.clear)
         }
-        .edgesIgnoringSafeArea(.top)
     }
 }
 
