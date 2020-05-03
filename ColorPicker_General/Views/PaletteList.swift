@@ -52,6 +52,7 @@ struct PaletteList: View {
                     )
                     
                     Text("© 2020 MAX GILLESPIE")
+                        .padding(.bottom)
                 }
             }.blur(radius: self.showNewPaletteAlert ? 4 : 0)
             .disabled(self.showNewPaletteAlert)

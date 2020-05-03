@@ -23,7 +23,7 @@ struct ColorPicker: View {
         ZStack(alignment: .bottom) {
             ColorSelectionView(r: $r, g: $g, b: $b, helper: helper)
             
-            CurrentPaletteDisplay(viewModel: self.viewModel, showCurrentPalette: $showCurrentPalette)
+            CurrentPaletteDisplay(viewModel: self.viewModel, showCurrentPalette: $showCurrentPalette, r: $r, g: $g, b: $b)
             
             Image(systemName: "plus.square")
                 .resizable()

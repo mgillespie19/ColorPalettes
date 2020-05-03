@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2E023FD28733F768D9B9DEFF /* Pods_ColorPicker_GeneralTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B667B0B9CB8F4C198A5BD795 /* Pods_ColorPicker_GeneralTests.framework */; };
 		60B8A8325599CF139C56C57C /* Pods_ColorPicker_General_ColorPicker_GeneralUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A2D165CBBFBCD2C18543E2 /* Pods_ColorPicker_General_ColorPicker_GeneralUITests.framework */; };
-		847083E3AC217DBEE03F7521 /* Pods_ColorPicker_General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF78997BD4B56996F0BACC8 /* Pods_ColorPicker_General.framework */; };
 		F612F14C2375DA96009BA2EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F612F14B2375DA96009BA2EC /* AppDelegate.swift */; };
 		F612F14E2375DA96009BA2EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F612F14D2375DA96009BA2EC /* SceneDelegate.swift */; };
 		F612F1512375DA96009BA2EC /* ColorPicker_General.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F612F14F2375DA96009BA2EC /* ColorPicker_General.xcdatamodeld */; };
@@ -23,6 +22,7 @@
 		F612F1822375E068009BA2EC /* ColorTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F612F1812375E068009BA2EC /* ColorTile.swift */; };
 		F64FAD02238CA0B7006CB02C /* PaintChipsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64FAD01238CA0B7006CB02C /* PaintChipsAlert.swift */; };
 		F653AD84242F1D0100AC1B27 /* PaletteListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F653AD83242F1D0100AC1B27 /* PaletteListItem.swift */; };
+		F66CB4C1245E5EAE00790595 /* InteractableCurrentPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66CB4C0245E5EAE00790595 /* InteractableCurrentPaletteView.swift */; };
 		F6869A4A2457443B00955FC6 /* InteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6869A492457443B00955FC6 /* InteractionView.swift */; };
 		F6A119752399CBC900DBCE18 /* EditColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A119742399CBC900DBCE18 /* EditColorView.swift */; };
 		F6A119772399CE4500DBCE18 /* ColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A119762399CE4500DBCE18 /* ColorSelectionView.swift */; };
@@ -84,6 +84,7 @@
 		F612F1812375E068009BA2EC /* ColorTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTile.swift; sourceTree = "<group>"; };
 		F64FAD01238CA0B7006CB02C /* PaintChipsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintChipsAlert.swift; sourceTree = "<group>"; };
 		F653AD83242F1D0100AC1B27 /* PaletteListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteListItem.swift; sourceTree = "<group>"; };
+		F66CB4C0245E5EAE00790595 /* InteractableCurrentPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractableCurrentPaletteView.swift; sourceTree = "<group>"; };
 		F6869A492457443B00955FC6 /* InteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionView.swift; sourceTree = "<group>"; };
 		F6A119742399CBC900DBCE18 /* EditColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditColorView.swift; sourceTree = "<group>"; };
 		F6A119762399CE4500DBCE18 /* ColorSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionView.swift; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				847083E3AC217DBEE03F7521 /* Pods_ColorPicker_General.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +273,7 @@
 				F612F1812375E068009BA2EC /* ColorTile.swift */,
 				F64FAD01238CA0B7006CB02C /* PaintChipsAlert.swift */,
 				F6C7855B242FC86B003178F9 /* CurrentPaletteView.swift */,
+				F66CB4C0245E5EAE00790595 /* InteractableCurrentPaletteView.swift */,
 				F6C7855D242FC91E003178F9 /* CurrentPaletteDisplay.swift */,
 			);
 			path = Components;
@@ -492,7 +493,7 @@
 		};
 		F6869A4D2457534900955FC6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -503,9 +504,9 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/FirebaseCrashlytics/run\n";
+			shellScript = "# ${PODS_ROOT}/FirebaseCrashlytics/run\n";
 		};
 		F9E2B3EF30B1EA5ADE86AE8D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -549,6 +550,7 @@
 				F612F17F2375DEFB009BA2EC /* ColorPicker.swift in Sources */,
 				F612F1822375E068009BA2EC /* ColorTile.swift in Sources */,
 				F612F1532375DA96009BA2EC /* ContentView.swift in Sources */,
+				F66CB4C1245E5EAE00790595 /* InteractableCurrentPaletteView.swift in Sources */,
 				F653AD84242F1D0100AC1B27 /* PaletteListItem.swift in Sources */,
 				F6E22669237C902F00EC2D1E /* PaletteView.swift in Sources */,
 				F6E22671237C9B8A00EC2D1E /* PaletteContainer.swift in Sources */,
@@ -722,16 +724,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2;
+				CURRENT_PROJECT_VERSION = 1.3.5;
 				DEVELOPMENT_ASSET_PATHS = "\"ColorPicker_General/Preview Content\"";
 				DEVELOPMENT_TEAM = Q7TC672PPY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ColorPicker_General/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "Max-Gillespie.ColorPicker";
 				PRODUCT_NAME = "Paint Chips";
 				SWIFT_VERSION = 5.0;
@@ -745,16 +748,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2;
+				CURRENT_PROJECT_VERSION = 1.3.5;
 				DEVELOPMENT_ASSET_PATHS = "\"ColorPicker_General/Preview Content\"";
 				DEVELOPMENT_TEAM = Q7TC672PPY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ColorPicker_General/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "Max-Gillespie.ColorPicker";
 				PRODUCT_NAME = "Paint Chips";
 				SWIFT_VERSION = 5.0;

@@ -37,7 +37,7 @@ struct ColorTile: View {
                 .frame(width: UIScreen.main.bounds.width * 0.43)
             }
             .padding()
-            .frame(width: UIScreen.main.bounds.width * 0.43, height: expand ? 365 : 165)
+            .frame(width: UIScreen.main.bounds.width * 0.45, height: expand ? UIScreen.main.bounds.width * 0.96 : UIScreen.main.bounds.width * 0.45)
             .background(Color(red: self.r, green: self.g, blue: self.b))
             .cornerRadius(5)
             .animation(.spring())

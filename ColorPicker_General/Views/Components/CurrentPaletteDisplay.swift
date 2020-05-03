@@ -13,6 +13,9 @@ struct CurrentPaletteDisplay: View {
     var viewModel: PaletteViewModel
     
     @Binding var showCurrentPalette: Bool
+    @Binding var r: Double
+    @Binding var g: Double
+    @Binding var b: Double
     
     @State var paletteColors: [ColorCell] = []
     
@@ -38,17 +41,14 @@ struct CurrentPaletteDisplay: View {
             .padding()
             
             VStack {
-                CurrentPaletteView(paletteColors: $paletteColors, showBorder: true)
+                InteractableCurrentPaletteView(paletteColors: $paletteColors, r: $r, g: $g, b: $b, showBorder: true)
             }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.leading)
                 .padding(.trailing)
                 .labelsHidden()
                 .opacity(self.showCurrentPalette ? 1 : 0)
-                .frame(height: self.showCurrentPalette ? 50 : 0)
-
-            Divider()
-                .padding()
+                .frame(height: self.showCurrentPalette ? 40 : 0)
             
             Spacer()
         }
