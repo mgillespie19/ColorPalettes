@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>848699817108-qqve18kscvqlaglt00adm609g94f7kfo.apps.googleusercontent.com</string>
+	<string>435012437145-vqo8562c7t3us5upn9qpm1mfq2pc627e.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.848699817108-qqve18kscvqlaglt00adm609g94f7kfo</string>
+	<string>com.googleusercontent.apps.435012437145-vqo8562c7t3us5upn9qpm1mfq2pc627e</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBuMRlsTz4ycugW1VJOXQxwKsbeBgzv7zs</string>
+	<string>AIzaSyB51WqCmjR8PRRaI-BNVE7wIKK5AM__B14</string>
 	<key>GCM_SENDER_ID</key>
-	<string>848699817108</string>
+	<string>435012437145</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>Max-Gillespie.ColorPicker</string>
 	<key>PROJECT_ID</key>
-	<string>paint-chips</string>
+	<string>paint-chips-color-palette-tool</string>
 	<key>STORAGE_BUCKET</key>
-	<string>paint-chips.appspot.com</string>
+	<string>paint-chips-color-palette-tool.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,10 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:848699817108:ios:1dfd7bf7a45987de460881</string>
+	<string>1:435012437145:ios:5dc4952bfc0b1f0bb0a408</string>
 	<key>DATABASE_URL</key>
-	<string>https://paint-chips.firebaseio.com</string>
+	<string>https://paint-chips-color-palette-tool.firebaseio.com</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-9754668352022980~8421620190</string>
 </dict>
 </plist>

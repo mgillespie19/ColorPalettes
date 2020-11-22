@@ -27,6 +27,7 @@
 		F6A119752399CBC900DBCE18 /* EditColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A119742399CBC900DBCE18 /* EditColorView.swift */; };
 		F6A119772399CE4500DBCE18 /* ColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A119762399CE4500DBCE18 /* ColorSelectionView.swift */; };
 		F6A5D13223771C7A005D3D56 /* PaletteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A5D13123771C7A005D3D56 /* PaletteViewModel.swift */; };
+		F6A977A4256AFEBB00AEB297 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6A977A3256AFEBB00AEB297 /* GoogleService-Info.plist */; };
 		F6C7855C242FC86B003178F9 /* CurrentPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7855B242FC86B003178F9 /* CurrentPaletteView.swift */; };
 		F6C7855E242FC91E003178F9 /* CurrentPaletteDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7855D242FC91E003178F9 /* CurrentPaletteDisplay.swift */; };
 		F6CE39592561A2A0001458A5 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE39582561A2A0001458A5 /* Palette.swift */; };
@@ -36,7 +37,6 @@
 		F6E2266D237C939500EC2D1E /* PaletteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E2266C237C939500EC2D1E /* PaletteListViewModel.swift */; };
 		F6E2266F237C96E800EC2D1E /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E2266E237C96E800EC2D1E /* ColorCell.swift */; };
 		F6E22671237C9B8A00EC2D1E /* PaletteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E22670237C9B8A00EC2D1E /* PaletteContainer.swift */; };
-		F6F48B1624573F5C00D18CB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6F48B1524573F5C00D18CB1 /* GoogleService-Info.plist */; };
 		F6FB36BC2561EC9C003AF1A7 /* MavenPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6FB36BB2561EC9C003AF1A7 /* MavenPro-Regular.ttf */; };
 		F7D3A5D0228D9DAA5351E514 /* Pods_ColorPicker_General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A43A8CA4E6726ADC3927A61 /* Pods_ColorPicker_General.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +92,7 @@
 		F6A119742399CBC900DBCE18 /* EditColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditColorView.swift; sourceTree = "<group>"; };
 		F6A119762399CE4500DBCE18 /* ColorSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionView.swift; sourceTree = "<group>"; };
 		F6A5D13123771C7A005D3D56 /* PaletteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteViewModel.swift; sourceTree = "<group>"; };
+		F6A977A3256AFEBB00AEB297 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F6C7855B242FC86B003178F9 /* CurrentPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPaletteView.swift; sourceTree = "<group>"; };
 		F6C7855D242FC91E003178F9 /* CurrentPaletteDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPaletteDisplay.swift; sourceTree = "<group>"; };
 		F6CE39582561A2A0001458A5 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -101,7 +102,6 @@
 		F6E2266C237C939500EC2D1E /* PaletteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteListViewModel.swift; sourceTree = "<group>"; };
 		F6E2266E237C96E800EC2D1E /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		F6E22670237C9B8A00EC2D1E /* PaletteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteContainer.swift; sourceTree = "<group>"; };
-		F6F48B1524573F5C00D18CB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F6FB36BB2561EC9C003AF1A7 /* MavenPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MavenPro-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -188,9 +188,9 @@
 				F612F14B2375DA96009BA2EC /* AppDelegate.swift */,
 				F612F14D2375DA96009BA2EC /* SceneDelegate.swift */,
 				F612F1522375DA96009BA2EC /* ContentView.swift */,
+				F6A977A3256AFEBB00AEB297 /* GoogleService-Info.plist */,
 				F6FB36BB2561EC9C003AF1A7 /* MavenPro-Regular.ttf */,
 				F612F1542375DA98009BA2EC /* Assets.xcassets */,
-				F6F48B1524573F5C00D18CB1 /* GoogleService-Info.plist */,
 				F612F1592375DA98009BA2EC /* LaunchScreen.storyboard */,
 				F612F15C2375DA98009BA2EC /* Info.plist */,
 				F612F14F2375DA96009BA2EC /* ColorPicker_General.xcdatamodeld */,
@@ -399,7 +399,7 @@
 			files = (
 				F612F15B2375DA98009BA2EC /* LaunchScreen.storyboard in Resources */,
 				F6FB36BC2561EC9C003AF1A7 /* MavenPro-Regular.ttf in Resources */,
-				F6F48B1624573F5C00D18CB1 /* GoogleService-Info.plist in Resources */,
+				F6A977A4256AFEBB00AEB297 /* GoogleService-Info.plist in Resources */,
 				F612F1582375DA98009BA2EC /* Preview Assets.xcassets in Resources */,
 				F612F1552375DA98009BA2EC /* Assets.xcassets in Resources */,
 			);
