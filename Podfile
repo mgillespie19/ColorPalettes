@@ -8,6 +8,7 @@ target 'ColorPicker_General' do
   # Pods for ColorPicker_General
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
+  pod 'Google-Mobile-Ads-SDK'
   
   target 'ColorPicker_GeneralTests' do
     inherit! :search_paths

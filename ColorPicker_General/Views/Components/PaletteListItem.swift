@@ -15,23 +15,12 @@ struct PaletteListItem: View {
     @State var paletteColors: [ColorCell] = []
     
     var body: some View {
-        ZStack (alignment: .topTrailing) {
-            HStack {
-                CurrentPaletteView(paletteColors: $paletteColors)
-            }
-            .frame(width: UIScreen.main.bounds.width * 0.88)
+        VStack (alignment: .leading) {
+            CurrentPaletteView(paletteColors: $paletteColors)
             
-            HStack {
-                Spacer()
-            
-                Text(palette.PaletteName)
-                    .font(.custom("Source Sans", size: 20))
-                    .fontWeight(.ultraLight)
-                .padding()
-                .background(Color(red: 0.95, green: 0.95, blue: 0.95).opacity(0.4))
-                .cornerRadius(3)
-                .offset(x: -5, y: 5)
-            }
+            Text(palette.PaletteName)
+                .font(.custom("Maven Pro", size: 20))
+                .fontWeight(.ultraLight)
         }
         .frame(height: 135)
         .onAppear {

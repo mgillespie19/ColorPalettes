@@ -67,6 +67,7 @@ class ColorCell: NSObject, NSCoding, Identifiable, Comparable {
 //        coder.encode(self.shouldDelete, forKey: "shouldDelete")
     }
 
+    // MARK:- Comparison
     static func < (lhs: ColorCell, rhs: ColorCell) -> Bool {
         let lhsSum = lhs.r + lhs.g + lhs.b
         let rhsSum = rhs.r + rhs.g + rhs.b
