@@ -104,13 +104,18 @@ struct GADBannerViewController: UIViewControllerRepresentable {
         viewController.view.addSubview(view)
         viewController.view.frame = CGRect(origin: .zero, size: kGADAdSizeBanner.size)
         
-        view.load(GADRequest())
+        let request = GADRequest()
+        view.load(request)
         
         return viewController
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
         
+    }
+    
+    func reload() {
+        print("reload!")
     }
 }
 
