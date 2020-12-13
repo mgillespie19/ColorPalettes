@@ -16,13 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["F8BB1C28-BAE8-11D6-9C31-00039315CD46"]
-        
+        // use this for testing
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [(kGADSimulatorID as! String)]
+
         FirebaseApp.configure()
-        
-        
         
         return true
     }
