@@ -236,6 +236,41 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F61697A42589B37600FAFFF8 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				F64FAD01238CA0B7006CB02C /* PaintChipsAlert.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		F61697A52589B38800FAFFF8 /* Color Detail Display */ = {
+			isa = PBXGroup;
+			children = (
+				F66CB4C0245E5EAE00790595 /* InteractableCurrentPaletteView.swift */,
+				F6C7855D242FC91E003178F9 /* CurrentPaletteDisplay.swift */,
+				F6C7855B242FC86B003178F9 /* CurrentPaletteView.swift */,
+			);
+			path = "Color Detail Display";
+			sourceTree = "<group>";
+		};
+		F61697A62589B3A100FAFFF8 /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				F612F1812375E068009BA2EC /* ColorTile.swift */,
+			);
+			path = Tiles;
+			sourceTree = "<group>";
+		};
+		F61697B32589B4D400FAFFF8 /* Create A color */ = {
+			isa = PBXGroup;
+			children = (
+				F6A119762399CE4500DBCE18 /* ColorSelectionView.swift */,
+				F6A119742399CBC900DBCE18 /* EditColorView.swift */,
+			);
+			path = "Create A color";
+			sourceTree = "<group>";
+		};
 		F6869A4B2457444B00955FC6 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,14 +310,11 @@
 		F6E22672237CD15900EC2D1E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F61697B32589B4D400FAFFF8 /* Create A color */,
+				F61697A62589B3A100FAFFF8 /* Tiles */,
+				F61697A52589B38800FAFFF8 /* Color Detail Display */,
+				F61697A42589B37600FAFFF8 /* Alerts */,
 				F653AD83242F1D0100AC1B27 /* PaletteListItem.swift */,
-				F6A119742399CBC900DBCE18 /* EditColorView.swift */,
-				F6A119762399CE4500DBCE18 /* ColorSelectionView.swift */,
-				F612F1812375E068009BA2EC /* ColorTile.swift */,
-				F64FAD01238CA0B7006CB02C /* PaintChipsAlert.swift */,
-				F6C7855B242FC86B003178F9 /* CurrentPaletteView.swift */,
-				F66CB4C0245E5EAE00790595 /* InteractableCurrentPaletteView.swift */,
-				F6C7855D242FC91E003178F9 /* CurrentPaletteDisplay.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
