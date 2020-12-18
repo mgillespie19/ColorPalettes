@@ -20,6 +20,8 @@
 		F612F1712375DA98009BA2EC /* ColorPicker_GeneralUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F612F1702375DA98009BA2EC /* ColorPicker_GeneralUITests.swift */; };
 		F612F17F2375DEFB009BA2EC /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F612F17E2375DEFB009BA2EC /* ColorPicker.swift */; };
 		F612F1822375E068009BA2EC /* ColorTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F612F1812375E068009BA2EC /* ColorTile.swift */; };
+		F61697B52589C8A900FAFFF8 /* PaletteListTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61697B42589C8A900FAFFF8 /* PaletteListTile.swift */; };
+		F61697BF2589C99100FAFFF8 /* FeedHeaderTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61697BE2589C99100FAFFF8 /* FeedHeaderTile.swift */; };
 		F64FAD02238CA0B7006CB02C /* PaintChipsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64FAD01238CA0B7006CB02C /* PaintChipsAlert.swift */; };
 		F653AD84242F1D0100AC1B27 /* PaletteListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F653AD83242F1D0100AC1B27 /* PaletteListItem.swift */; };
 		F66CB4C1245E5EAE00790595 /* InteractableCurrentPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66CB4C0245E5EAE00790595 /* InteractableCurrentPaletteView.swift */; };
@@ -30,6 +32,7 @@
 		F6A977A4256AFEBB00AEB297 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6A977A3256AFEBB00AEB297 /* GoogleService-Info.plist */; };
 		F6C7855C242FC86B003178F9 /* CurrentPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7855B242FC86B003178F9 /* CurrentPaletteView.swift */; };
 		F6C7855E242FC91E003178F9 /* CurrentPaletteDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7855D242FC91E003178F9 /* CurrentPaletteDisplay.swift */; };
+		F6CCD14F258B17090078C08F /* FeedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CCD14E258B17090078C08F /* FeedHeader.swift */; };
 		F6CE39592561A2A0001458A5 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE39582561A2A0001458A5 /* Palette.swift */; };
 		F6E22667237C702600EC2D1E /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E22666237C702600EC2D1E /* Helper.swift */; };
 		F6E22669237C902F00EC2D1E /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E22668237C902F00EC2D1E /* PaletteView.swift */; };
@@ -85,6 +88,8 @@
 		F612F1722375DA98009BA2EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F612F17E2375DEFB009BA2EC /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		F612F1812375E068009BA2EC /* ColorTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTile.swift; sourceTree = "<group>"; };
+		F61697B42589C8A900FAFFF8 /* PaletteListTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteListTile.swift; sourceTree = "<group>"; };
+		F61697BE2589C99100FAFFF8 /* FeedHeaderTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHeaderTile.swift; sourceTree = "<group>"; };
 		F64FAD01238CA0B7006CB02C /* PaintChipsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintChipsAlert.swift; sourceTree = "<group>"; };
 		F653AD83242F1D0100AC1B27 /* PaletteListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteListItem.swift; sourceTree = "<group>"; };
 		F66CB4C0245E5EAE00790595 /* InteractableCurrentPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractableCurrentPaletteView.swift; sourceTree = "<group>"; };
@@ -95,6 +100,7 @@
 		F6A977A3256AFEBB00AEB297 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F6C7855B242FC86B003178F9 /* CurrentPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPaletteView.swift; sourceTree = "<group>"; };
 		F6C7855D242FC91E003178F9 /* CurrentPaletteDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPaletteDisplay.swift; sourceTree = "<group>"; };
+		F6CCD14E258B17090078C08F /* FeedHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHeader.swift; sourceTree = "<group>"; };
 		F6CE39582561A2A0001458A5 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		F6E22666237C702600EC2D1E /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		F6E22668237C902F00EC2D1E /* PaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
@@ -258,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				F612F1812375E068009BA2EC /* ColorTile.swift */,
+				F61697B42589C8A900FAFFF8 /* PaletteListTile.swift */,
 			);
 			path = Tiles;
 			sourceTree = "<group>";
@@ -269,6 +276,15 @@
 				F6A119742399CBC900DBCE18 /* EditColorView.swift */,
 			);
 			path = "Create A color";
+			sourceTree = "<group>";
+		};
+		F61697BC2589C97C00FAFFF8 /* Custom UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				F61697BE2589C99100FAFFF8 /* FeedHeaderTile.swift */,
+				F6CCD14E258B17090078C08F /* FeedHeader.swift */,
+			);
+			path = "Custom UI Elements";
 			sourceTree = "<group>";
 		};
 		F6869A4B2457444B00955FC6 /* Tabs */ = {
@@ -310,6 +326,7 @@
 		F6E22672237CD15900EC2D1E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F61697BC2589C97C00FAFFF8 /* Custom UI Elements */,
 				F61697B32589B4D400FAFFF8 /* Create A color */,
 				F61697A62589B3A100FAFFF8 /* Tiles */,
 				F61697A52589B38800FAFFF8 /* Color Detail Display */,
@@ -580,6 +597,7 @@
 			files = (
 				F6C7855E242FC91E003178F9 /* CurrentPaletteDisplay.swift in Sources */,
 				F6CE39592561A2A0001458A5 /* Palette.swift in Sources */,
+				F6CCD14F258B17090078C08F /* FeedHeader.swift in Sources */,
 				F6E2266D237C939500EC2D1E /* PaletteListViewModel.swift in Sources */,
 				F6A5D13223771C7A005D3D56 /* PaletteViewModel.swift in Sources */,
 				F6A119752399CBC900DBCE18 /* EditColorView.swift in Sources */,
@@ -588,10 +606,12 @@
 				F64FAD02238CA0B7006CB02C /* PaintChipsAlert.swift in Sources */,
 				F6869A4A2457443B00955FC6 /* InteractionView.swift in Sources */,
 				F612F14E2375DA96009BA2EC /* SceneDelegate.swift in Sources */,
+				F61697BF2589C99100FAFFF8 /* FeedHeaderTile.swift in Sources */,
 				F6E22667237C702600EC2D1E /* Helper.swift in Sources */,
 				F612F17F2375DEFB009BA2EC /* ColorPicker.swift in Sources */,
 				F612F1822375E068009BA2EC /* ColorTile.swift in Sources */,
 				F612F1532375DA96009BA2EC /* ContentView.swift in Sources */,
+				F61697B52589C8A900FAFFF8 /* PaletteListTile.swift in Sources */,
 				F66CB4C1245E5EAE00790595 /* InteractableCurrentPaletteView.swift in Sources */,
 				F653AD84242F1D0100AC1B27 /* PaletteListItem.swift in Sources */,
 				F6E22669237C902F00EC2D1E /* PaletteView.swift in Sources */,
