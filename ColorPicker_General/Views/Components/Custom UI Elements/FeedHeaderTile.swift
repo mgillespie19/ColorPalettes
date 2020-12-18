@@ -23,18 +23,17 @@ struct FeedHeaderTile: View {
             Text("\(self.num)")
                 .foregroundColor(selected ? Color.white : selectionColor)
                 .font(.title)
-                .padding(.top, 4)
+                .padding(.top, 16)
             
             Text(title)
                 .foregroundColor(selected ? Color.white : Color.black)
                 .font(.headline)
-                .padding(.bottom, 4)
+                .padding(.bottom, 16)
                 .padding(.trailing, 8)
         }
-        .padding()
+        .frame(width: 96)
         .background(selected ? selectionColor : Color(red: 0.9, green: 0.9, blue: 0.9, opacity: 1))
         .cornerRadius(20)
-        .frame(minWidth: 100, idealWidth: 100, maxWidth: .infinity, minHeight: 90, idealHeight: 90, maxHeight: 90)
         .shadow(color: selected ? selectionColor : Color.clear, radius: 10, x: 0, y: 0)
         .animation(.default)
     }

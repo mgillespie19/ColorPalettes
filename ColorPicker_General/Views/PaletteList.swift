@@ -18,56 +18,59 @@ struct PaletteList: View {
     @State var newPaletteName = ""
     @State var selectedPalette: PaletteViewModel?
     
+    //    List {
+    //        ForEach(viewModel.palettes) { palette in
+    //            NavigationLink (destination: PaletteContainer(viewModel: palette)) {
+    //                Button(action:  {
+    //                    self.showPaletteDetail.toggle()
+    //                    self.selectedPalette = palette
+    //                }, label: {
+    //                    PaletteListItem(palette: palette)
+    //                        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+    //                })
+    //            }
+    //        }
+    //        .onDelete(perform: delete)
+    //    }
+    
     var body: some View {
         ZStack(alignment: .center) {
-            NavigationView {
-                ZStack(alignment: .bottom) {
-                    List {
-                        ForEach(viewModel.palettes) { palette in
-                            NavigationLink (destination:
-                                                PaletteContainer(viewModel: palette)
-                            ) {
-                                Button(action:  {
-                                    self.showPaletteDetail.toggle()
-                                    self.selectedPalette = palette
-                                }, label: {
-                                    PaletteListItem(palette: palette)
-                                        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                })
-                            }
-                        }
-                        .onDelete(perform: delete)
-                    }
-                    .navigationBarTitle("Palettes")
-                    .navigationBarItems(trailing: Button(action: {
+            ScrollView {
+                HStack {
+                    Text("Feed")
+                        .font(.title)
+                        .padding()
+                    Spacer()
+                    Button(action: {
                         self.showNewPaletteAlert.toggle()
                     }
                     , label: {
                         Image(systemName: "plus")
                             .resizable()
                             .frame(width: 30, height: 30)
-                            .padding(.top)
-                            .padding(.bottom)
+                            .padding()
                             .foregroundColor(.black)
                     })
-                    )
-                    
-                    Text("© 2020 MAX GILLESPIE")
-                        .padding(.bottom)
-                    
-                    HStack(alignment: .center) {
-                        Spacer()
-                        GADBannerViewController()
-                            .onAppear {
-                                print("banner should reload!")
-                            }
-                        Spacer()
-                    }
-                    .frame(width: UIScreen.main.bounds.width, height: 60, alignment: .bottom)
-                    .padding(.bottom, -10)
-                    .padding(.leading)
                 }
-            }.blur(radius: self.showNewPaletteAlert ? 4 : 0)
+                FeedHeader()
+                HStack {
+                    Text("My palettes")
+                        .font(.headline)
+                        .padding()
+                    Spacer()
+                }
+                
+                ForEach(viewModel.palettes) { palette in
+                    Button(action: {
+                        selectedPalette = palette
+                        showPaletteDetail.toggle()
+                    }, label: {
+                        PaletteListItem(palette: palette)
+                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    })
+                }
+            }
+            .blur(radius: self.showNewPaletteAlert ? 4 : 0)
             .disabled(self.showNewPaletteAlert)
             .animation(.linear)
             
@@ -75,7 +78,53 @@ struct PaletteList: View {
                 .opacity(self.showNewPaletteAlert ? 1 : 0)
                 .animation(.easeInOut)
         }
+        .sheet(isPresented: $showPaletteDetail, content: {
+            if (selectedPalette != nil) {
+                PaletteContainer(viewModel: selectedPalette!)
+            } else {
+                Text("nil")
+            }
+        })
     }
+    
+    //    var body: some View {
+    //        ZStack(alignment: .center) {
+    //            NavigationView {
+    //                List {
+    //                    ForEach(viewModel.palettes) { palette in
+    //                        NavigationLink (destination: PaletteContainer(viewModel: palette)) {
+    //                            Button(action:  {
+    //                                self.showPaletteDetail.toggle()
+    //                                self.selectedPalette = palette
+    //                            }, label: {
+    //                                PaletteListItem(palette: palette)
+    //                                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+    //                            })
+    //                        }
+    //                    }
+    //                    .onDelete(perform: delete)
+    //                }
+    //                .navigationBarItems(trailing: Button(action: {
+    //                    self.showNewPaletteAlert.toggle()
+    //                }
+    //                , label: {
+    //                    Image(systemName: "plus")
+    //                        .resizable()
+    //                        .frame(width: 30, height: 30)
+    //                        .padding(.top)
+    //                        .padding(.bottom)
+    //                        .foregroundColor(.black)
+    //                })
+    //                )
+    //            }.blur(radius: self.showNewPaletteAlert ? 4 : 0)
+    //            .disabled(self.showNewPaletteAlert)
+    //            .animation(.linear)
+    //
+    //            PaintChipsAlert(viewModel: self.viewModel, show: $showNewPaletteAlert, paletteName: newPaletteName)
+    //                .opacity(self.showNewPaletteAlert ? 1 : 0)
+    //                .animation(.easeInOut)
+    //        }
+    //    }
     
     private func delete(with indexSet: IndexSet) {
         if (indexSet.count > 0) {

@@ -20,6 +20,9 @@ struct CurrentPaletteView: View {
                     .padding(.leading, -16)
             }
         }
+        .padding(.leading)
+        .padding(.trailing)
+        .padding(.top)
     }
 }
 

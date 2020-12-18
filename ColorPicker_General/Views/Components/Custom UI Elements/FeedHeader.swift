@@ -23,21 +23,21 @@ struct FeedHeader: View {
     var body: some View {
         HStack() {
             Spacer()
-            FeedHeaderTile(selected: $feedSelected, num: $numPalettes, selectionColor: Color.blue, title: "palettes")
+            FeedHeaderTile(selected: $feedSelected, num: $numPalettes, selectionColor: Color(red: 255/255, green: 190/255, blue: 21/255, opacity: 1.0), title: "palettes")
                 .onTapGesture {
                     self.feedSelected = true
                     self.savesSelected = false
                     self.followersSelected = false
                 }
             Spacer()
-            FeedHeaderTile(selected: $savesSelected, num: $numSaves, selectionColor: Color.blue, title: "saves")
+            FeedHeaderTile(selected: $savesSelected, num: $numSaves, selectionColor: Color(red: 101/255, green: 134/255, blue: 250/255, opacity: 1.0), title: "saves")
                 .onTapGesture {
                     self.feedSelected = false
                     self.savesSelected = true
                     self.followersSelected = false
                 }
             Spacer()
-            FeedHeaderTile(selected: $followersSelected, num: $numFollowers, selectionColor: Color.blue, title: "followers")
+            FeedHeaderTile(selected: $followersSelected, num: $numFollowers, selectionColor: Color(red: 255/255, green: 97/255, blue: 97/255, opacity: 1.0), title: "followers")
                 .onTapGesture {
                     self.feedSelected = false
                     self.savesSelected = false
