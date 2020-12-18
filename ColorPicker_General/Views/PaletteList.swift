@@ -19,7 +19,7 @@ struct PaletteList: View {
     @State var selectedPalette: PaletteViewModel?
     
     var body: some View {
-        ZStack(alignment: .bottom) {
+        ZStack(alignment: .center) {
             NavigationView {
                 ZStack(alignment: .bottom) {
                     List {
@@ -73,7 +73,6 @@ struct PaletteList: View {
             
             PaintChipsAlert(viewModel: self.viewModel, show: $showNewPaletteAlert, paletteName: newPaletteName)
                 .opacity(self.showNewPaletteAlert ? 1 : 0)
-                .offset(y: self.showNewPaletteAlert ? -(UIScreen.main.bounds.height / 2) : 200)
                 .animation(.easeInOut)
         }
     }
