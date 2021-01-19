@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CurrentPaletteView: View {
     
-    @Binding var paletteColors: [ColorCell]
+    var paletteColors: [ColorCell]
     
     var body: some View {
         HStack {

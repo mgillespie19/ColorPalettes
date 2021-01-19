@@ -10,22 +10,20 @@ import SwiftUI
 
 struct PaletteListItem: View {
     
-    var palette: PaletteViewModel
-    
-    @State var paletteColors: [ColorCell] = []
-    
+    @ObservedObject var palette: PaletteViewModel
+        
     var body: some View {
         VStack (alignment: .leading) {
-            CurrentPaletteView(paletteColors: $paletteColors)
+            CurrentPaletteView(paletteColors: palette.allColors)
             
             Text(palette.PaletteName)
                 .font(.custom("Maven Pro", size: 20))
                 .fontWeight(.ultraLight)
         }
         .frame(height: 135)
-        .onAppear {
-            self.paletteColors = self.palette.sortColorsDescending()
-        }
+//        .onAppear {
+//            paletteColors = palette.sortColorsDescending()
+//        }
     }
 }
 

@@ -17,13 +17,13 @@ struct ColorPicker: View {
     @State var g: Double = 1
     @State var b: Double = 1
     
+    @Binding var selectedTab: Int
+    
     var helper: Helper
     
     var body: some View {
         ZStack(alignment: .bottom) {
             ColorSelectionView(r: $r, g: $g, b: $b, helper: helper)
-            
-            CurrentPaletteDisplay(viewModel: self.viewModel, showCurrentPalette: $showCurrentPalette, r: $r, g: $g, b: $b)
             
             Image(systemName: "plus.square")
                 .resizable()
@@ -39,13 +39,15 @@ struct ColorPicker: View {
                     
                     let generator = UIImpactFeedbackGenerator(style: .light)
                     generator.impactOccurred()
+                    
+                    selectedTab = 1
             }
         }
     }
 }
 
-struct ColorPicker_Previews: PreviewProvider {
-    static var previews: some View {
-        ColorPicker(viewModel: PaletteViewModel(name: "New Palette", parentVM: PaletteListViewmodel()), helper: Helper())
-    }
-}
+//struct ColorPicker_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ColorPicker(viewModel: PaletteViewModel(name: "New Palette", parentVM: PaletteListViewmodel()), helper: Helper(), selectedTab: <#T##Binding<Int>#>)
+//    }
+//}

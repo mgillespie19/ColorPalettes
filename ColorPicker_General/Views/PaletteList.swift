@@ -15,121 +15,84 @@ struct PaletteList: View {
     @State var paletteList: [PaletteViewModel] = []
     @State var showPaletteDetail = false
     @State var showNewPaletteAlert = false
+    @State var showHamburger = false
     @State var newPaletteName = ""
-    @State var selectedPalette: PaletteViewModel?
-    
-    //    List {
-    //        ForEach(viewModel.palettes) { palette in
-    //            NavigationLink (destination: PaletteContainer(viewModel: palette)) {
-    //                Button(action:  {
-    //                    self.showPaletteDetail.toggle()
-    //                    self.selectedPalette = palette
-    //                }, label: {
-    //                    PaletteListItem(palette: palette)
-    //                        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-    //                })
-    //            }
-    //        }
-    //        .onDelete(perform: delete)
-    //    }
+    @State var selectedPalette: PaletteViewModel = PaletteViewModel(name: "error", parentVM: PaletteListViewmodel())
+    @State var selectedTab = 1
+    @State var showDeletePaletteAlert = false
+        
+    private let helper = Helper()
     
     var body: some View {
         ZStack(alignment: .center) {
-            ScrollView {
-                HStack {
-                    Text("Feed")
-                        .font(.title)
-                        .padding()
-                    Spacer()
-                    Button(action: {
-                        self.showNewPaletteAlert.toggle()
+            ZStack(alignment: .leading) {
+                ScrollView {
+                    VStack(spacing: 30) {
+                        
+                        // MARK:- Header components
+                        PLHeader(showHamburger: $showHamburger, showNewPaletteAlert: $showNewPaletteAlert)
+                        FeedHeader(showHamburger: $showHamburger, numPalettes: viewModel.numPalettes, numSaves: 0, numFollowers: 223)
+                        
+                        // MARK:- List items
+                        ForEach(viewModel.palettes) { palette in
+                            PaletteListItem(palette: palette)
+                                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            .onTapGesture {
+                                if (self.showHamburger) {
+                                    self.showHamburger.toggle()
+                                } else {
+                                    loadPalette(selectedPalette: palette)
+                                }
+                            }
+                            .onLongPressGesture {
+                                self.showDeletePaletteAlert.toggle()
+                            }
+                        }
+                        
+                        // MARK:- Google Ads
+                        // GADListItem()
                     }
-                    , label: {
-                        Image(systemName: "plus")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .padding()
-                            .foregroundColor(.black)
-                    })
                 }
-                FeedHeader()
-                HStack {
-                    Text("My palettes")
-                        .font(.headline)
-                        .padding()
-                    Spacer()
+                .onTapGesture {
+                    self.showHamburger = false
                 }
+                .blur(radius: (self.showNewPaletteAlert || self.showHamburger) ? 4 : 0)
+                .frame(width: UIScreen.main.bounds.width)
+                .disabled(self.showNewPaletteAlert)
+                .animation(Animation.default)
+                .offset(y: showPaletteDetail ? -UIScreen.main.bounds.height : 0)
                 
-                ForEach(viewModel.palettes) { palette in
-                    Button(action: {
-                        selectedPalette = palette
-                        showPaletteDetail.toggle()
-                    }, label: {
-                        PaletteListItem(palette: palette)
-                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    })
-                }
+                HamburgerMenu(showHamburger: $showHamburger)
             }
-            .blur(radius: self.showNewPaletteAlert ? 4 : 0)
-            .disabled(self.showNewPaletteAlert)
-            .animation(.linear)
+            
+            ZStack(alignment: .bottom) {
+                PaletteView(viewModel: selectedPalette)
+                    .opacity(selectedTab == 1 ? 1 : 0)
+                
+                ColorPicker(viewModel: selectedPalette, selectedTab: $selectedTab, helper: helper)
+                    .opacity(selectedTab == 2 ? 1 : 0)
+                
+                TabNavigator(goBack: self.$showPaletteDetail, selectedTab: self.$selectedTab)
+            }
+            .frame(width: UIScreen.main.bounds.width)
+            .animation(Animation.default)
+            .offset(y: showPaletteDetail ? 0 : UIScreen.main.bounds.height)
             
             PaintChipsAlert(viewModel: self.viewModel, show: $showNewPaletteAlert, paletteName: newPaletteName)
                 .opacity(self.showNewPaletteAlert ? 1 : 0)
                 .animation(.easeInOut)
         }
-        .sheet(isPresented: $showPaletteDetail, content: {
-            if (selectedPalette != nil) {
-                PaletteContainer(viewModel: selectedPalette!)
-            } else {
-                Text("nil")
-            }
-        })
     }
-    
-    //    var body: some View {
-    //        ZStack(alignment: .center) {
-    //            NavigationView {
-    //                List {
-    //                    ForEach(viewModel.palettes) { palette in
-    //                        NavigationLink (destination: PaletteContainer(viewModel: palette)) {
-    //                            Button(action:  {
-    //                                self.showPaletteDetail.toggle()
-    //                                self.selectedPalette = palette
-    //                            }, label: {
-    //                                PaletteListItem(palette: palette)
-    //                                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-    //                            })
-    //                        }
-    //                    }
-    //                    .onDelete(perform: delete)
-    //                }
-    //                .navigationBarItems(trailing: Button(action: {
-    //                    self.showNewPaletteAlert.toggle()
-    //                }
-    //                , label: {
-    //                    Image(systemName: "plus")
-    //                        .resizable()
-    //                        .frame(width: 30, height: 30)
-    //                        .padding(.top)
-    //                        .padding(.bottom)
-    //                        .foregroundColor(.black)
-    //                })
-    //                )
-    //            }.blur(radius: self.showNewPaletteAlert ? 4 : 0)
-    //            .disabled(self.showNewPaletteAlert)
-    //            .animation(.linear)
-    //
-    //            PaintChipsAlert(viewModel: self.viewModel, show: $showNewPaletteAlert, paletteName: newPaletteName)
-    //                .opacity(self.showNewPaletteAlert ? 1 : 0)
-    //                .animation(.easeInOut)
-    //        }
-    //    }
     
     private func delete(with indexSet: IndexSet) {
         if (indexSet.count > 0) {
             viewModel.deletePalette(atIndex: indexSet.first!)
         }
+    }
+    
+    private func loadPalette(selectedPalette: PaletteViewModel) {
+        showPaletteDetail.toggle()
+        self.selectedPalette = selectedPalette
     }
 }
 
@@ -138,34 +101,3 @@ struct PaletteList_Previews: PreviewProvider {
         PaletteList(viewModel: PaletteListViewmodel())
     }
 }
-
-
-struct GADBannerViewController: UIViewControllerRepresentable {
-    
-    func makeUIViewController(context: Context) -> UIViewController {
-        let view = GADBannerView(adSize: kGADAdSizeBanner)
-        let viewController = UIViewController()
-        
-        view.adUnitID = "ca-app-pub-9754668352022980/5795456854"
-        view.rootViewController = viewController
-        
-        viewController.view.addSubview(view)
-        viewController.view.frame = CGRect(origin: .zero, size: kGADAdSizeBanner.size)
-        
-        let request = GADRequest()
-        view.load(request)
-        
-        return viewController
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        
-    }
-    
-    func reload() {
-        print("reload!")
-    }
-}
-
-// real id: ca-app-pub-9754668352022980/5795456854
-// TEST id: ca-app-pub-3940256099942544/2934735716

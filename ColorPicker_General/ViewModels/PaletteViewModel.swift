@@ -11,13 +11,14 @@ import Combine
 import UIKit
 import SwiftUI
 
-class PaletteViewModel: Identifiable, ObservableObject {
+class PaletteViewModel: ObservableObject, Identifiable {
     
     var PaletteName: String
     var parentViewModel: PaletteListViewmodel
     
     @Published private(set) var Rcolors: [ColorCell] = []
     @Published private(set) var Lcolors: [ColorCell] = []
+    @Published var allColors: [ColorCell] = []
     var idCounter = 0
     
     private var TAG = "PVM:"
@@ -27,6 +28,7 @@ class PaletteViewModel: Identifiable, ObservableObject {
         print(TAG, "init called")
         PaletteName = name
         parentViewModel = parentVM
+        allColors = sortColorsDescending()
     }
     
     deinit {
@@ -46,7 +48,8 @@ class PaletteViewModel: Identifiable, ObservableObject {
         }
         
         idCounter += 1
-        
+
+        self.allColors = sortColorsDescending()
         self.parentViewModel.uploadPalettes()
     }
     
@@ -61,6 +64,8 @@ class PaletteViewModel: Identifiable, ObservableObject {
                 Rcolors.remove(at: i)
                 
                 self.parentViewModel.uploadPalettes()
+                self.allColors = sortColorsDescending()
+                
                 return
             }
         }
@@ -70,6 +75,8 @@ class PaletteViewModel: Identifiable, ObservableObject {
                 Lcolors.remove(at: i)
                 
                 self.parentViewModel.uploadPalettes()
+                self.allColors = sortColorsDescending()
+                
                 return
             }
         }

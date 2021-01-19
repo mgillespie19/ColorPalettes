@@ -12,6 +12,7 @@ import Combine
 class PaletteListViewmodel: ObservableObject {
     
     @Published private(set) var palettes: [PaletteViewModel] = []
+    @Published public var numPalettes = 0
     
     private var TAG = "PLVM:"
     private var cancellable: AnyCancellable?
@@ -38,6 +39,8 @@ class PaletteListViewmodel: ObservableObject {
                 
                 paletteIndex += 1
             }
+            
+            numPalettes = self.palettes.count
 
             print("\(self.TAG) profile user fetch successful.")
         } else {
@@ -51,13 +54,16 @@ class PaletteListViewmodel: ObservableObject {
     
     func addPalette(newName: String) {
         print("adding palette!")
+        
         self.palettes.append(PaletteViewModel(name: newName, parentVM: self))
+        self.numPalettes = palettes.count
         
         uploadPalettes()
     }
     
     func deletePalette(atIndex: Int) {
         self.palettes.remove(at: atIndex)
+        self.numPalettes = palettes.count
         
         uploadPalettes()
     }

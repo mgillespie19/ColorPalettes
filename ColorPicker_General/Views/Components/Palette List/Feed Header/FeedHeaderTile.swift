@@ -12,7 +12,7 @@ struct FeedHeaderTile: View {
     
     // instance variables
     @Binding var selected: Bool
-    @Binding var num: Int
+    var num: Int
     var selectionColor: Color
     var title: String
     

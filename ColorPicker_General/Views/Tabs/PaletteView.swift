@@ -36,17 +36,6 @@ struct PaletteView: View {
                     Spacer()
                 }
             }
-            HStack(alignment: .center) {
-                Spacer()
-                GADBannerViewController()
-                    .onAppear {
-                        print("banner should reload!")
-                    }
-                Spacer()
-            }
-            .frame(width: UIScreen.main.bounds.width, height: 60, alignment: .bottom)
-            .padding(.bottom, -10)
-            .padding(.leading)
         }
         .onDisappear {
             self.editingMode = false

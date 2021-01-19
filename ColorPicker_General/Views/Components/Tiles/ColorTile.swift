@@ -74,13 +74,6 @@ struct ColorTile: View {
                         .opacity(showEditButton ? 1 : 0)
                         .animation(.easeIn)
                         .offset(x: 5, y:5)
-                    
-//                    Image(systemName: "minus.rectangle.fill")
-//                        .resizable()
-//                        .frame(width: 35, height: 35)
-//                        .opacity(showEditButtons ? 1 : 0)
-//                        .foregroundColor(Color(UIColor.systemRed))
-//                        .animation(.easeIn)
                 }
                 
                 Spacer()
