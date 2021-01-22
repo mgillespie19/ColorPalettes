@@ -15,7 +15,17 @@ struct PaletteList: View {
     @State var paletteList: [PaletteViewModel] = []
     @State var showPaletteDetail = false
     @State var showNewPaletteAlert = false
+    
+    // MARK:- Hamburger state tracking
     @State var showHamburger = false
+    @State var showHamburgerDetail = false
+    @State var hideProfile = false
+    @State var hideAbout = false
+    @State var hideHowTo = false
+    @State var hideRate = false
+    @State var hideLeaveFeedback = false
+    @State var hideUpgrade = false
+    
     @State var newPaletteName = ""
     @State var selectedPalette: PaletteViewModel = PaletteViewModel(name: "error", parentVM: PaletteListViewmodel())
     @State var selectedTab = 1
@@ -31,7 +41,7 @@ struct PaletteList: View {
                         
                         // MARK:- Header components
                         PLHeader(showHamburger: $showHamburger, showNewPaletteAlert: $showNewPaletteAlert)
-                        FeedHeader(showHamburger: $showHamburger, numPalettes: viewModel.numPalettes, numSaves: 0, numFollowers: 223)
+                        FeedHeader(showHamburger: $showHamburger, numPalettes: viewModel.numPalettes, numSaves: 0, numFollowers: 1140)
                         
                         // MARK:- List items
                         ForEach(viewModel.palettes) { palette in
@@ -39,7 +49,7 @@ struct PaletteList: View {
                                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                             .onTapGesture {
                                 if (self.showHamburger) {
-                                    self.showHamburger.toggle()
+                                    self.deselectHamburger()
                                 } else {
                                     loadPalette(selectedPalette: palette)
                                 }
@@ -54,7 +64,7 @@ struct PaletteList: View {
                     }
                 }
                 .onTapGesture {
-                    self.showHamburger = false
+                    self.deselectHamburger()
                 }
                 .blur(radius: (self.showNewPaletteAlert || self.showHamburger) ? 4 : 0)
                 .frame(width: UIScreen.main.bounds.width)
@@ -62,7 +72,7 @@ struct PaletteList: View {
                 .animation(Animation.default)
                 .offset(y: showPaletteDetail ? -UIScreen.main.bounds.height : 0)
                 
-                HamburgerMenu(showHamburger: $showHamburger)
+                HamburgerMenu(showHamburger: $showHamburger, showHamburgerDetail: $showHamburgerDetail, hideProfile: $hideProfile, hideAbout: $hideAbout, hideHowTo: $hideHowTo, hideRate: $hideRate, hideLeaveFeedback: $hideLeaveFeedback, hideUpgrade: $hideUpgrade, callback: self.updateActiveView)
             }
             
             ZStack(alignment: .bottom) {
@@ -93,6 +103,58 @@ struct PaletteList: View {
     private func loadPalette(selectedPalette: PaletteViewModel) {
         showPaletteDetail.toggle()
         self.selectedPalette = selectedPalette
+    }
+    
+    private func deselectHamburger() {
+        self.showHamburger = false
+        self.showHamburgerDetail = false
+        updateActiveView(viewId: -1)
+    }
+    
+    func updateActiveView(viewId: Int) -> Void {
+        print("updating active view")
+        
+        setAllStates(value: true)
+        
+        switch viewId {
+        case 1:
+            print("showing profile info")
+            showHamburgerDetail = true
+            break
+        case 2:
+            print("showing about info")
+            showHamburgerDetail = true
+            break
+        case 3:
+            print("showing how to info")
+            showHamburgerDetail = true
+            break
+        case 4:
+            print("showing rate info")
+            showHamburgerDetail = true
+            break
+        case 5:
+            print("showing leave feedback info")
+            showHamburgerDetail = true
+            break
+        case 6:
+            print("showing upgrade info")
+            showHamburgerDetail = true
+            break
+        default:
+            // if we get any other value just reset all values
+            setAllStates(value: false)
+            showHamburgerDetail = false
+        }
+    }
+    
+    func setAllStates(value: Bool) {
+        hideProfile = value
+        hideAbout = value
+        hideHowTo = value
+        hideRate = value
+        hideLeaveFeedback = value
+        hideUpgrade = value
     }
 }
 
