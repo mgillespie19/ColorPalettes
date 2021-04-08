@@ -10,43 +10,39 @@ import SwiftUI
 
 struct HamburgerLineItemStack: View {
     
-    @Binding var hideProfile: Bool
-    @Binding var hideAbout: Bool
-    @Binding var hideHowTo: Bool
-    @Binding var hideRate: Bool
-    @Binding var hideLeaveFeedback: Bool
-    @Binding var hideUpgrade: Bool
+    @Binding var selectedTab: Int
+    @Binding var showHamburgerDetail: Bool
     
     var callback: (Int) -> ()
     
     var body: some View {
         VStack {
-            HamburgerLineItem(hidden: $hideProfile, viewId: 1, title: "Profile", systemImageName: "person.crop.square.fill")
+            HamburgerLineItem(hidden: $showHamburgerDetail, viewId: 1, title: "Profile", systemImageName: "person.crop.square.fill")
                 .onTapGesture {
                     callback(1)
                 }
 
-            HamburgerLineItem(hidden: $hideAbout, viewId: 2, title: "About", systemImageName: "questionmark.circle.fill")
+            HamburgerLineItem(hidden: $showHamburgerDetail, viewId: 2, title: "About", systemImageName: "questionmark.circle.fill")
                 .onTapGesture {
                     callback(2)
                 }
 
-            HamburgerLineItem(hidden: $hideHowTo, viewId: 3, title: "How to", systemImageName: "info.circle.fill")
+            HamburgerLineItem(hidden: $showHamburgerDetail, viewId: 3, title: "How to", systemImageName: "info.circle.fill")
                 .onTapGesture {
                     callback(3)
                 }
 
-            HamburgerLineItem(hidden: $hideRate, viewId: 4, title: "Leave a review", systemImageName: "star.fill")
+            HamburgerLineItem(hidden: $showHamburgerDetail, viewId: 4, title: "Leave a review", systemImageName: "star.fill")
                 .onTapGesture {
                     callback(4)
                 }
 
-            HamburgerLineItem(hidden: $hideLeaveFeedback, viewId: 5, title: "How can we improve?", systemImageName: "doc.on.clipboard")
+            HamburgerLineItem(hidden: $showHamburgerDetail, viewId: 5, title: "How can we improve?", systemImageName: "doc.on.clipboard")
                 .onTapGesture {
                     callback(5)
                 }
 
-            HamburgerLineItem(hidden: $hideUpgrade, viewId: 6, title: "Upgrade", systemImageName: "globe")
+            HamburgerLineItem(hidden: $showHamburgerDetail, viewId: 6, title: "Upgrade", systemImageName: "globe")
                 .onTapGesture {
                     callback(6)
                 }

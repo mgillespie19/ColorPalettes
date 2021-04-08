@@ -16,4 +16,12 @@ class Helper {
         }
         return Color.white
     }
+    
+    func rgbToHex(r: Double, g: Double, b: Double) -> String {
+        let r_str = String(format:"%02X", Int(r * 255))
+        let g_str = String(format:"%02X", Int(g * 255))
+        let b_str = String(format:"%02X", Int(b * 255))
+        
+        return "\(r_str)\(g_str)\(b_str)"
+    }
 }

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CurrentPaletteView: View {
+struct HorizontalPaletteColorsView: View {
     
     var paletteColors: [ColorCell]
     

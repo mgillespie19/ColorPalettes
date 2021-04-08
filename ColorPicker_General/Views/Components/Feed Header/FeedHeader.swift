@@ -11,9 +11,7 @@ import SwiftUI
 struct FeedHeader: View {
     
     // selection
-    @State var feedSelected = true
-    @State var savesSelected = false
-    @State var followersSelected = false
+    @Binding var paletteViewSelected: Int
     @State var headerText = "My palettes"
     
     // variable tracking
@@ -26,41 +24,41 @@ struct FeedHeader: View {
         VStack(alignment: .leading) {
             HStack() {
                 Spacer()
-                FeedHeaderTile(selected: $feedSelected, num: numPalettes, selectionColor: Color(red: 255/255, green: 190/255, blue: 21/255, opacity: 1.0), title: "palettes")
+                
+                FeedHeaderTile(selected: $paletteViewSelected, hotSelection: 1, num: numPalettes, selectionColor: Color(red: 255/255, green: 190/255, blue: 21/255, opacity: 1.0), title: "palettes")
                     .onTapGesture {
                         if (showHamburger) {
                             showHamburger.toggle()
                         } else {
-                            self.feedSelected = true
-                            self.savesSelected = false
-                            self.followersSelected = false
+                            self.paletteViewSelected = 1
                             self.headerText = "My palettes"
                         }
                     }
+                
                 Spacer()
-                FeedHeaderTile(selected: $savesSelected, num: numSaves, selectionColor: Color(red: 101/255, green: 134/255, blue: 250/255, opacity: 1.0), title: "saves")
+                
+                FeedHeaderTile(selected: $paletteViewSelected, hotSelection: 2, num: numSaves, selectionColor: Color(red: 101/255, green: 134/255, blue: 250/255, opacity: 1.0), title: "saves")
                     .onTapGesture {
                         if (showHamburger) {
                             showHamburger.toggle()
                         } else {
-                            self.feedSelected = false
-                            self.savesSelected = true
-                            self.followersSelected = false
+                            self.paletteViewSelected = 2
                             self.headerText = "My saves"
                         }
                     }
+                
                 Spacer()
-                FeedHeaderTile(selected: $followersSelected, num: numFollowers, selectionColor: Color(red: 255/255, green: 97/255, blue: 97/255, opacity: 1.0), title: "followers")
+                
+                FeedHeaderTile(selected: $paletteViewSelected, hotSelection: 3, num: numFollowers, selectionColor: Color(red: 255/255, green: 97/255, blue: 97/255, opacity: 1.0), title: "following")
                     .onTapGesture {
                         if (showHamburger) {
                             showHamburger.toggle()
                         } else {
-                            self.feedSelected = false
-                            self.savesSelected = false
-                            self.followersSelected = true
+                            self.paletteViewSelected = 3
                             self.headerText = "My followers"
                         }
                     }
+                
                 Spacer()
             }
             

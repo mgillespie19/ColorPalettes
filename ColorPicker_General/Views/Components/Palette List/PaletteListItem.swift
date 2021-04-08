@@ -10,20 +10,55 @@ import SwiftUI
 
 struct PaletteListItem: View {
     
+    // MARK:- variables passed in
     @ObservedObject var palette: PaletteViewModel
+    
+    var callback: (PaletteViewModel) -> ()
+    
+    // MARK:- state tracking
+    @State var showPaletteActions = false
         
     var body: some View {
         VStack (alignment: .leading) {
-            CurrentPaletteView(paletteColors: palette.allColors)
+            HorizontalPaletteColorsView(paletteColors: palette.allColors)
             
-            Text(palette.PaletteName)
-                .font(.custom("Maven Pro", size: 20))
-                .fontWeight(.ultraLight)
+            HStack {
+                Text(palette.PaletteName)
+                    .font(.custom("Maven Pro", size: 20))
+                    .fontWeight(.ultraLight)
+                
+                Spacer()
+                
+                Button(action: {
+                    showPaletteActions.toggle()
+                }, label: {
+                    Image(systemName: "ellipsis")
+                        .resizable()
+                        .frame(width: 25, height: 5)
+                        .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
+                })
+            }
+            .padding(.leading)
+            .padding(.trailing)
+            
+            Divider()
+                .padding(.trailing)
         }
         .frame(height: 135)
-//        .onAppear {
-//            paletteColors = palette.sortColorsDescending()
-//        }
+        .actionSheet(isPresented: $showPaletteActions) {
+            ActionSheet( title: Text("Palette options"),
+                         message: nil,
+                         buttons: [
+                            .default(
+                                Text("Delete palette")
+                                    .foregroundColor(.red),
+                                action: {
+                                    print("Deleting palette at \(palette.id)")
+                                    callback(palette)
+                                }),
+                            .cancel()
+                         ])
+        }
     }
 }
 

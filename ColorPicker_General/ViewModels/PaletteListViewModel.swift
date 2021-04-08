@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import Firebase
 
 class PaletteListViewmodel: ObservableObject {
     
@@ -61,11 +62,22 @@ class PaletteListViewmodel: ObservableObject {
         uploadPalettes()
     }
     
-    func deletePalette(atIndex: Int) {
-        self.palettes.remove(at: atIndex)
+    func deletePaletteAtIndex(index: Int) {
+        self.palettes.remove(at: index)
         self.numPalettes = palettes.count
-        
+
         uploadPalettes()
+    }
+    
+    func deletePalette(paletteToDelete: PaletteViewModel) {
+        var i = 0
+        self.palettes.forEach { palette in
+            if (palette == paletteToDelete) {
+                deletePaletteAtIndex(index: i)
+                return
+            }
+            i += 1
+        }
     }
     
     func cancel() {

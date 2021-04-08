@@ -8,30 +8,32 @@
 
 import SwiftUI
 
-struct InteractableCurrentPaletteView: View {
+struct VerticalPaletteDisplay: View {
     
     @Binding var paletteColors: [ColorCell]
+    
     @Binding var r: Double
     @Binding var g: Double
     @Binding var b: Double
-    var showBorder = true
+    
+    @Binding var showPalette: Bool
     
     var body: some View {
-        HStack {
+        VStack {
             ForEach(paletteColors) { color in
                 Rectangle().foregroundColor(Color(red: color.r, green: color.g, blue: color.b))
-                    .cornerRadius(4)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color(red: 0.85, green: 0.85, blue: 0.85), lineWidth: self.showBorder ? 0.25 : 0)
-                    )
+                    .frame(height: UIScreen.main.bounds.width * 0.85 / CGFloat(paletteColors.count))
                     .onTapGesture {
                         self.r = color.r
                         self.g = color.g
                         self.b = color.b
                 }
+                .padding(.top, -8)
             }
         }
+        .frame(width: UIScreen.main.bounds.width / 4, height: UIScreen.main.bounds.width * 0.85)
+        .offset(x: self.showPalette ? -UIScreen.main.bounds.width / 4 : 0)
+        .padding(.bottom, -4)
     }
 }
 

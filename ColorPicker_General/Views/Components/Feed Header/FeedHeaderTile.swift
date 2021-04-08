@@ -11,7 +11,8 @@ import SwiftUI
 struct FeedHeaderTile: View {
     
     // instance variables
-    @Binding var selected: Bool
+    @Binding var selected: Int
+    var hotSelection: Int
     var num: Int
     var selectionColor: Color
     var title: String
@@ -21,20 +22,20 @@ struct FeedHeaderTile: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("\(self.num)")
-                .foregroundColor(selected ? Color.white : selectionColor)
+                .foregroundColor(selected == hotSelection ? Color.white : selectionColor)
                 .font(.title)
                 .padding(.top, 16)
             
             Text(title)
-                .foregroundColor(selected ? Color.white : Color.black)
+                .foregroundColor(selected == hotSelection ? Color.white : Color.black)
                 .font(.headline)
                 .padding(.bottom, 16)
                 .padding(.trailing, 8)
         }
         .frame(width: 96)
-        .background(selected ? selectionColor : Color(red: 0.9, green: 0.9, blue: 0.9, opacity: 1))
+        .background(selected == hotSelection ? selectionColor : Color(red: 0.9, green: 0.9, blue: 0.9, opacity: 1))
         .cornerRadius(20)
-        .shadow(color: selected ? selectionColor : Color.clear, radius: 10, x: 0, y: 0)
+        .shadow(color: selected == hotSelection ? selectionColor : Color.clear, radius: 10, x: 0, y: 0)
         .animation(.default)
     }
     

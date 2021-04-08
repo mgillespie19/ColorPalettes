@@ -8,13 +8,13 @@
 
 import SwiftUI
 
-struct GADListItem: View {
+struct GADListItem: View {    
     var body: some View {
         HStack(alignment: .center) {
             Spacer()
             GADBannerViewController()
                 .onAppear {
-                    print("banner should reload!")
+                    
                 }
             Spacer()
         }

@@ -11,7 +11,7 @@ import Combine
 import UIKit
 import SwiftUI
 
-class PaletteViewModel: ObservableObject, Identifiable {
+class PaletteViewModel: ObservableObject, Identifiable, Comparable {
     
     var PaletteName: String
     var parentViewModel: PaletteListViewmodel
@@ -36,15 +36,12 @@ class PaletteViewModel: ObservableObject, Identifiable {
     }
     
     func addColor(r: Double, g: Double, b: Double) {
-        let r_str = String(format:"%02X", Int(r * 255))
-        let g_str = String(format:"%02X", Int(g * 255))
-        let b_str = String(format:"%02X", Int(b * 255))
         let helper = Helper()
         
         if (Rcolors.count <= Lcolors.count) {
-            Rcolors.append(ColorCell(ID: idCounter, R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b), ShouldDelete: false))
+            Rcolors.append(ColorCell(ID: idCounter, R: r, G: g, B: b, h: helper.rgbToHex(r: r, g: g, b: b)))
         } else {
-            Lcolors.append(ColorCell(ID: idCounter, R: r, G: g, B: b, h: "\(r_str)\(g_str)\(b_str)", tc: helper.evalTileFontColor(r: r, g: g, b: b), ShouldDelete: false))
+            Lcolors.append(ColorCell(ID: idCounter, R: r, G: g, B: b, h: helper.rgbToHex(r: r, g: g, b: b)))
         }
         
         idCounter += 1
@@ -115,4 +112,13 @@ class PaletteViewModel: ObservableObject, Identifiable {
         
         return returnList.sorted(by: <)
     }
+    
+    static func < (lhs: PaletteViewModel, rhs: PaletteViewModel) -> Bool {
+        return lhs.id < rhs.id
+    }
+    
+    static func == (lhs: PaletteViewModel, rhs: PaletteViewModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
 }

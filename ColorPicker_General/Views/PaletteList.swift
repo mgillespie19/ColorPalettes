@@ -19,17 +19,13 @@ struct PaletteList: View {
     // MARK:- Hamburger state tracking
     @State var showHamburger = false
     @State var showHamburgerDetail = false
-    @State var hideProfile = false
-    @State var hideAbout = false
-    @State var hideHowTo = false
-    @State var hideRate = false
-    @State var hideLeaveFeedback = false
-    @State var hideUpgrade = false
+    @State var selectedHamburgerTab = 0 // 0 is root option
     
     @State var newPaletteName = ""
     @State var selectedPalette: PaletteViewModel = PaletteViewModel(name: "error", parentVM: PaletteListViewmodel())
     @State var selectedTab = 1
     @State var showDeletePaletteAlert = false
+    @State var paletteViewSelected = 1
         
     private let helper = Helper()
     
@@ -41,26 +37,35 @@ struct PaletteList: View {
                         
                         // MARK:- Header components
                         PLHeader(showHamburger: $showHamburger, showNewPaletteAlert: $showNewPaletteAlert)
-                        FeedHeader(showHamburger: $showHamburger, numPalettes: viewModel.numPalettes, numSaves: 0, numFollowers: 1140)
+                        FeedHeader(paletteViewSelected: $paletteViewSelected, showHamburger: $showHamburger, numPalettes: viewModel.numPalettes, numSaves: 0, numFollowers: 1140)
                         
                         // MARK:- List items
-                        ForEach(viewModel.palettes) { palette in
-                            PaletteListItem(palette: palette)
-                                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                            .onTapGesture {
-                                if (self.showHamburger) {
-                                    self.deselectHamburger()
-                                } else {
-                                    loadPalette(selectedPalette: palette)
+                        ZStack {
+                            VStack {
+                                ForEach(viewModel.palettes) { palette in
+                                    PaletteListItem(palette: palette, callback: deletePalette(p:))
+                                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                    .onTapGesture {
+                                        if (self.showHamburger) {
+                                            self.deselectHamburger()
+                                        } else {
+                                            loadPalette(selectedPalette: palette)
+                                        }
+                                    }
+                                    .onLongPressGesture {
+                                        self.showDeletePaletteAlert.toggle()
+                                    }
                                 }
                             }
-                            .onLongPressGesture {
-                                self.showDeletePaletteAlert.toggle()
-                            }
+                            .opacity(self.paletteViewSelected == 1 ? 1 : 0)
+
+                            Text("saves")
+                                .opacity(self.paletteViewSelected == 2 ? 1 : 0)
+                            
+                            Text("following")
+                                .opacity(self.paletteViewSelected == 3 ? 1 : 0)
                         }
-                        
-                        // MARK:- Google Ads
-                        // GADListItem()
+                        .animation(.none)
                     }
                 }
                 .onTapGesture {
@@ -72,17 +77,21 @@ struct PaletteList: View {
                 .animation(Animation.default)
                 .offset(y: showPaletteDetail ? -UIScreen.main.bounds.height : 0)
                 
-                HamburgerMenu(showHamburger: $showHamburger, showHamburgerDetail: $showHamburgerDetail, hideProfile: $hideProfile, hideAbout: $hideAbout, hideHowTo: $hideHowTo, hideRate: $hideRate, hideLeaveFeedback: $hideLeaveFeedback, hideUpgrade: $hideUpgrade, callback: self.updateActiveView)
+                HamburgerMenu(showHamburger: $showHamburger, showHamburgerDetail: $showHamburgerDetail, selectedHamburgerTab: $selectedHamburgerTab, callback: self.updateActiveView)
             }
             
-            ZStack(alignment: .bottom) {
-                PaletteView(viewModel: selectedPalette)
-                    .opacity(selectedTab == 1 ? 1 : 0)
+            VStack {
+                ZStack(alignment: .bottom) {
+                    PaletteView(viewModel: selectedPalette, goBack: self.$showPaletteDetail)
+                        .opacity(selectedTab == 1 ? 1 : 0)
+                    
+                    ColorPicker(viewModel: selectedPalette, selectedTab: $selectedTab, goBack: self.$showPaletteDetail, helper: helper)
+                        .opacity(selectedTab == 2 ? 1 : 0)
+                }
                 
-                ColorPicker(viewModel: selectedPalette, selectedTab: $selectedTab, helper: helper)
-                    .opacity(selectedTab == 2 ? 1 : 0)
+                // GADListItem()
                 
-                TabNavigator(goBack: self.$showPaletteDetail, selectedTab: self.$selectedTab)
+                TabNavigator(selectedTab: self.$selectedTab)
             }
             .frame(width: UIScreen.main.bounds.width)
             .animation(Animation.default)
@@ -96,7 +105,7 @@ struct PaletteList: View {
     
     private func delete(with indexSet: IndexSet) {
         if (indexSet.count > 0) {
-            viewModel.deletePalette(atIndex: indexSet.first!)
+            viewModel.deletePaletteAtIndex(index: indexSet.first!)
         }
     }
     
@@ -114,47 +123,17 @@ struct PaletteList: View {
     func updateActiveView(viewId: Int) -> Void {
         print("updating active view")
         
-        setAllStates(value: true)
-        
-        switch viewId {
-        case 1:
-            print("showing profile info")
+        if (viewId == 1 || viewId == 2 || viewId == 3 || viewId == 4 || viewId == 5 || viewId == 6) {
             showHamburgerDetail = true
-            break
-        case 2:
-            print("showing about info")
-            showHamburgerDetail = true
-            break
-        case 3:
-            print("showing how to info")
-            showHamburgerDetail = true
-            break
-        case 4:
-            print("showing rate info")
-            showHamburgerDetail = true
-            break
-        case 5:
-            print("showing leave feedback info")
-            showHamburgerDetail = true
-            break
-        case 6:
-            print("showing upgrade info")
-            showHamburgerDetail = true
-            break
-        default:
-            // if we get any other value just reset all values
-            setAllStates(value: false)
+            selectedHamburgerTab = viewId
+        } else {
             showHamburgerDetail = false
+            selectedHamburgerTab = 0
         }
     }
     
-    func setAllStates(value: Bool) {
-        hideProfile = value
-        hideAbout = value
-        hideHowTo = value
-        hideRate = value
-        hideLeaveFeedback = value
-        hideUpgrade = value
+    func deletePalette(p: PaletteViewModel) {
+        viewModel.deletePalette(paletteToDelete: p)
     }
 }
 

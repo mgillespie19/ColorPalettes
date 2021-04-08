@@ -10,17 +10,19 @@ import SwiftUI
 
 struct HamburgerMenu: View {
     
+    // MARK:- bindings passed in through constructor
+    
+    // hamburger
     @Binding var showHamburger: Bool
     @Binding var showHamburgerDetail: Bool
     
-    @Binding var hideProfile: Bool
-    @Binding var hideAbout: Bool
-    @Binding var hideHowTo: Bool
-    @Binding var hideRate: Bool
-    @Binding var hideLeaveFeedback: Bool
-    @Binding var hideUpgrade: Bool
+    // specific tabs
+    @Binding var selectedHamburgerTab: Int
     
     var callback: (Int) -> ()
+    
+    // MARK:- local state variables
+
     
     var body: some View {
         VStack {
@@ -30,20 +32,40 @@ struct HamburgerMenu: View {
             
             Divider()
             
-            HamburgerLineItemStack(hideProfile: $hideProfile, hideAbout: $hideAbout, hideHowTo: $hideHowTo, hideRate: $hideRate, hideLeaveFeedback: $hideLeaveFeedback, hideUpgrade: $hideUpgrade, callback: callback)
+            ZStack {
+                Text("profile view")
+                    .opacity(self.selectedHamburgerTab == 1 ? 1 : 0)
+                
+                Text("about view")
+                    .opacity(self.selectedHamburgerTab == 2 ? 1 : 0)
+
+                Text("how to view")
+                    .opacity(self.selectedHamburgerTab == 3 ? 1 : 0)
+
+                Text("rate view")
+                    .opacity(self.selectedHamburgerTab == 4 ? 1 : 0)
+
+                Text("leave feedback view")
+                    .opacity(self.selectedHamburgerTab == 5 ? 1 : 0)
+
+                Text("upgrade view")
+                    .opacity(self.selectedHamburgerTab == 6 ? 1 : 0)
+
+                // top of stack
+                HamburgerLineItemStack(selectedTab: $selectedHamburgerTab, showHamburgerDetail: $showHamburgerDetail, callback: callback)
+            }
             
             Spacer()
             
-            
-            Text("c 2021 myEHR LLC")
+            Text("© 2021 Max Gillespie")
                 .padding()
         }
         .frame(width: showHamburgerDetail ? UIScreen.main.bounds.width * 0.9 : UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.height * 0.9)
         .background(Color.white)
         .cornerRadius(24)
         .shadow(radius: 8)
-        .animation(.easeInOut(duration: 0.2))
-        .offset(x: self.showHamburger ? UIScreen.main.bounds.width * 0.05 : -UIScreen.main.bounds.width * 0.6, y: self.showHamburger ? 0 : -28)
+        .animation(.easeInOut(duration: 0.3))
+        .offset(x: self.showHamburger ? UIScreen.main.bounds.width * 0.05 : -UIScreen.main.bounds.width, y: self.showHamburger ? 0 : -28)
     }
 }
 
