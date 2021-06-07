@@ -45,6 +45,7 @@ struct PaletteListItem: View {
                 .padding(.trailing)
         }
         .frame(height: 135)
+        .background(Color.white)
         .actionSheet(isPresented: $showPaletteActions) {
             ActionSheet( title: Text("Palette options"),
                          message: nil,
