@@ -24,7 +24,7 @@ struct PaletteListItem: View {
             
             HStack {
                 Text(palette.PaletteName)
-                    .font(.custom("Maven Pro", size: 20))
+                    .font(.custom("Maven Pro", size: 18))
                     .fontWeight(.ultraLight)
                 
                 Spacer()

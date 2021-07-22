@@ -19,25 +19,43 @@ struct HamburgerMenu: View {
     // specific tabs
     @Binding var selectedHamburgerTab: Int
     
-    var callback: (Int) -> ()
+    var activateHamburger: (Int) -> ()
     
     // MARK:- local state variables
 
     
     var body: some View {
         VStack {
-            Text("Paint Chips")
-                .font(.title)
-                .padding()
+            ZStack {
+                HStack {
+                    Button(action: {
+                        self.showHamburgerDetail.toggle()
+                        self.selectedHamburgerTab = 0
+                    }, label: {
+                        Image("back")
+                            .resizable()
+                            .frame(width: 12, height: 20)
+                            .padding(.leading)
+                            .opacity(self.showHamburgerDetail ? 1 : 0)
+                    })
+                    
+                    Spacer()
+                }
+                Text("Paint Chips")
+                    .font(.title)
+                    .padding()
+            }
             
             Divider()
             
             ZStack {
+                // TODO: add profile button back into menu
                 Text("profile view")
                     .opacity(self.selectedHamburgerTab == 1 ? 1 : 0)
                 
-                Text("about view")
+                AboutHamburgerView()
                     .opacity(self.selectedHamburgerTab == 2 ? 1 : 0)
+                    .frame(height: self.selectedHamburgerTab == 2 ? .infinity : 0)
 
                 Text("how to view")
                     .opacity(self.selectedHamburgerTab == 3 ? 1 : 0)
@@ -45,22 +63,23 @@ struct HamburgerMenu: View {
                 Text("rate view")
                     .opacity(self.selectedHamburgerTab == 4 ? 1 : 0)
 
-                Text("leave feedback view")
-                    .opacity(self.selectedHamburgerTab == 5 ? 1 : 0)
+//                Text("leave feedback view")
+//                    .opacity(self.selectedHamburgerTab == 5 ? 1 : 0)
 
                 Text("upgrade view")
                     .opacity(self.selectedHamburgerTab == 6 ? 1 : 0)
 
                 // top of stack
-                HamburgerLineItemStack(selectedTab: $selectedHamburgerTab, showHamburgerDetail: $showHamburgerDetail, callback: callback)
+                HamburgerLineItemStack(selectedTab: $selectedHamburgerTab, showHamburgerDetail: $showHamburgerDetail, callback: activateHamburger)
             }
             
             Spacer()
             
             Text("© 2021 Max Gillespie")
+                .font(.body)
                 .padding()
         }
-        .frame(width: showHamburgerDetail ? UIScreen.main.bounds.width * 0.9 : UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.height * 0.9)
+        .frame(width: showHamburgerDetail ? UIScreen.main.bounds.width * 0.9 : UIScreen.main.bounds.width * 0.66, height: UIScreen.main.bounds.height * 0.9)
         .background(Color.white)
         .cornerRadius(24)
         .shadow(radius: 8)

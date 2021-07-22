@@ -22,6 +22,10 @@
 		F612F1822375E068009BA2EC /* ColorTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F612F1812375E068009BA2EC /* ColorTile.swift */; };
 		F61697B52589C8A900FAFFF8 /* PaletteListTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61697B42589C8A900FAFFF8 /* PaletteListTile.swift */; };
 		F61697BF2589C99100FAFFF8 /* FeedHeaderTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61697BE2589C99100FAFFF8 /* FeedHeaderTile.swift */; };
+		F625AC0C269CF3FD004F5C8A /* AboutHamburgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625AC0B269CF3FD004F5C8A /* AboutHamburgerView.swift */; };
+		F625AC0F269E105E004F5C8A /* ScrollviewGeometryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625AC0E269E105E004F5C8A /* ScrollviewGeometryReader.swift */; };
+		F625AC11269E10AB004F5C8A /* GeometryTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625AC10269E10AB004F5C8A /* GeometryTools.swift */; };
+		F625AC14269E1193004F5C8A /* ListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625AC13269E1193004F5C8A /* ListHeader.swift */; };
 		F64FAD02238CA0B7006CB02C /* PaintChipsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64FAD01238CA0B7006CB02C /* PaintChipsAlert.swift */; };
 		F653AD84242F1D0100AC1B27 /* PaletteListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F653AD83242F1D0100AC1B27 /* PaletteListItem.swift */; };
 		F66CB4C1245E5EAE00790595 /* VerticalPaletteDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66CB4C0245E5EAE00790595 /* VerticalPaletteDisplay.swift */; };
@@ -98,6 +102,10 @@
 		F612F1812375E068009BA2EC /* ColorTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTile.swift; sourceTree = "<group>"; };
 		F61697B42589C8A900FAFFF8 /* PaletteListTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteListTile.swift; sourceTree = "<group>"; };
 		F61697BE2589C99100FAFFF8 /* FeedHeaderTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHeaderTile.swift; sourceTree = "<group>"; };
+		F625AC0B269CF3FD004F5C8A /* AboutHamburgerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutHamburgerView.swift; sourceTree = "<group>"; };
+		F625AC0E269E105E004F5C8A /* ScrollviewGeometryReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollviewGeometryReader.swift; sourceTree = "<group>"; };
+		F625AC10269E10AB004F5C8A /* GeometryTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryTools.swift; sourceTree = "<group>"; };
+		F625AC13269E1193004F5C8A /* ListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeader.swift; sourceTree = "<group>"; };
 		F64FAD01238CA0B7006CB02C /* PaintChipsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintChipsAlert.swift; sourceTree = "<group>"; };
 		F653AD83242F1D0100AC1B27 /* PaletteListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteListItem.swift; sourceTree = "<group>"; };
 		F66CB4C0245E5EAE00790595 /* VerticalPaletteDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPaletteDisplay.swift; sourceTree = "<group>"; };
@@ -274,6 +282,32 @@
 			path = Tiles;
 			sourceTree = "<group>";
 		};
+		F625AC0A269CF3E7004F5C8A /* Hamburger Pages */ = {
+			isa = PBXGroup;
+			children = (
+				F625AC0B269CF3FD004F5C8A /* AboutHamburgerView.swift */,
+			);
+			path = "Hamburger Pages";
+			sourceTree = "<group>";
+		};
+		F625AC0D269E104D004F5C8A /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				F625AC0E269E105E004F5C8A /* ScrollviewGeometryReader.swift */,
+				F625AC10269E10AB004F5C8A /* GeometryTools.swift */,
+			);
+			path = Geometry;
+			sourceTree = "<group>";
+		};
+		F625AC12269E117F004F5C8A /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				F6A79C4A25B688B200D3120D /* Feed Header */,
+				F625AC13269E1193004F5C8A /* ListHeader.swift */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
 		F6869A4B2457444B00955FC6 /* Color Tabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +411,7 @@
 		F6A79C6A25B6920100D3120D /* Hamburger */ = {
 			isa = PBXGroup;
 			children = (
+				F625AC0A269CF3E7004F5C8A /* Hamburger Pages */,
 				F6A79C6B25B6921F00D3120D /* HamburgerMenu.swift */,
 				F6A0CC2D25BB654A00D19766 /* HamburgerLineItem.swift */,
 				F6A33A8A25BB7BAE0080893C /* HamburgerLineItemStack.swift */,
@@ -395,9 +430,10 @@
 		F6E22672237CD15900EC2D1E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F625AC12269E117F004F5C8A /* Headers */,
+				F625AC0D269E104D004F5C8A /* Geometry */,
 				F6A33A9225BBE4590080893C /* Navigation */,
 				F6869A4B2457444B00955FC6 /* Color Tabs */,
-				F6A79C4A25B688B200D3120D /* Feed Header */,
 				F6A33AA025BE26F00080893C /* UI Buttons */,
 				F6A79C4925B6888D00D3120D /* Palette List */,
 				F6A79C6A25B6920100D3120D /* Hamburger */,
@@ -668,11 +704,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6A33A8B25BB7BAE0080893C /* HamburgerLineItemStack.swift in Sources */,
+				F625AC0F269E105E004F5C8A /* ScrollviewGeometryReader.swift in Sources */,
 				F6CE39592561A2A0001458A5 /* Palette.swift in Sources */,
 				F6CCD14F258B17090078C08F /* FeedHeader.swift in Sources */,
+				F625AC14269E1193004F5C8A /* ListHeader.swift in Sources */,
 				F6E2266D237C939500EC2D1E /* PaletteListViewModel.swift in Sources */,
 				F6A5D13223771C7A005D3D56 /* PaletteViewModel.swift in Sources */,
 				F6A79C5925B689AF00D3120D /* GADBannerViewController.swift in Sources */,
+				F625AC0C269CF3FD004F5C8A /* AboutHamburgerView.swift in Sources */,
 				F6A79C6125B689F800D3120D /* GADListItem.swift in Sources */,
 				F6A119772399CE4500DBCE18 /* ColorSelectionView.swift in Sources */,
 				F612F14C2375DA96009BA2EC /* AppDelegate.swift in Sources */,
@@ -692,6 +731,7 @@
 				F653AD84242F1D0100AC1B27 /* PaletteListItem.swift in Sources */,
 				F6E22669237C902F00EC2D1E /* PaletteView.swift in Sources */,
 				F6E2266B237C906400EC2D1E /* PaletteList.swift in Sources */,
+				F625AC11269E10AB004F5C8A /* GeometryTools.swift in Sources */,
 				F6E2266F237C96E800EC2D1E /* ColorCell.swift in Sources */,
 				F6C7855C242FC86B003178F9 /* HorizontalPaletteColorsView.swift in Sources */,
 				F6A79C4D25B688EA00D3120D /* PLHeader.swift in Sources */,
@@ -866,7 +906,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.0;
+				CURRENT_PROJECT_VERSION = 2.0.1;
 				DEVELOPMENT_ASSET_PATHS = "\"ColorPicker_General/Preview Content\"";
 				DEVELOPMENT_TEAM = Q7TC672PPY;
 				ENABLE_PREVIEWS = YES;
@@ -876,7 +916,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Max-Gillespie.ColorPicker";
 				PRODUCT_NAME = "Paint Chips";
 				SWIFT_VERSION = 5.0;
@@ -890,7 +930,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.0;
+				CURRENT_PROJECT_VERSION = 2.0.1;
 				DEVELOPMENT_ASSET_PATHS = "\"ColorPicker_General/Preview Content\"";
 				DEVELOPMENT_TEAM = Q7TC672PPY;
 				ENABLE_PREVIEWS = YES;
@@ -900,7 +940,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Max-Gillespie.ColorPicker";
 				PRODUCT_NAME = "Paint Chips";
 				SWIFT_VERSION = 5.0;

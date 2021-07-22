@@ -15,6 +15,7 @@ struct PaletteList: View {
     @State var paletteList: [PaletteViewModel] = []
     @State var showPaletteDetail = false
     @State var showNewPaletteAlert = false
+    @State var showHeader = false
     
     // MARK:- Hamburger state tracking
     @State var showHamburger = false
@@ -30,14 +31,17 @@ struct PaletteList: View {
     private let helper = Helper()
     
     var body: some View {
-        ZStack(alignment: .center) {
-            ZStack(alignment: .leading) {
+        ZStack(alignment: .top) {
+            ZStack(alignment: .topLeading) {
                 ScrollView {
                     VStack(spacing: 30) {
-                        
                         // MARK:- Header components
                         PLHeader(showHamburger: $showHamburger, showNewPaletteAlert: $showNewPaletteAlert)
+                        
+                        ScrollviewGeometryReader()
+                                                
                         FeedHeader(paletteViewSelected: $paletteViewSelected, showHamburger: $showHamburger, numPalettes: viewModel.numPalettes, numSaves: 0, numFollowers: 1140)
+                            .offset(y: -40)
                         
                         // MARK:- List items
                         ZStack {
@@ -66,6 +70,7 @@ struct PaletteList: View {
                                 .opacity(self.paletteViewSelected == 3 ? 1 : 0)
                         }
                         .animation(.none)
+                        .offset(y: -60)
                     }
                 }
                 .onTapGesture {
@@ -77,7 +82,7 @@ struct PaletteList: View {
                 .animation(Animation.default)
                 .offset(y: showPaletteDetail ? -UIScreen.main.bounds.height : 0)
                 
-                HamburgerMenu(showHamburger: $showHamburger, showHamburgerDetail: $showHamburgerDetail, selectedHamburgerTab: $selectedHamburgerTab, callback: self.updateActiveView)
+                HamburgerMenu(showHamburger: $showHamburger, showHamburgerDetail: $showHamburgerDetail, selectedHamburgerTab: $selectedHamburgerTab, activateHamburger: self.activateHamburger)
             }
             
             VStack {
@@ -94,12 +99,21 @@ struct PaletteList: View {
                 TabNavigator(selectedTab: self.$selectedTab)
             }
             .frame(width: UIScreen.main.bounds.width)
-            .animation(Animation.default)
+            .animation(.default)
             .offset(y: showPaletteDetail ? 0 : UIScreen.main.bounds.height)
+            
+            ListHeader(showHeader: $showHeader, headerTitle: "Palettes")
+                .offset(y: -88)
+                .opacity(showPaletteDetail ? 0 : (showHeader ? 1 : 0))
+                .animation(.easeOut(duration: 0.6))
             
             PaintChipsAlert(viewModel: self.viewModel, show: $showNewPaletteAlert, paletteName: newPaletteName)
                 .opacity(self.showNewPaletteAlert ? 1 : 0)
                 .animation(.easeInOut)
+                .offset(y: UIScreen.main.bounds.height * 0.3)
+        }
+        .onPreferenceChange(OffsetPreferenceKey.self) { value in
+            self.showHeader = value < 80
         }
     }
     
@@ -110,6 +124,7 @@ struct PaletteList: View {
     }
     
     private func loadPalette(selectedPalette: PaletteViewModel) {
+        selectedTab = 2
         showPaletteDetail.toggle()
         self.selectedPalette = selectedPalette
     }
@@ -117,10 +132,10 @@ struct PaletteList: View {
     private func deselectHamburger() {
         self.showHamburger = false
         self.showHamburgerDetail = false
-        updateActiveView(viewId: -1)
+        activateHamburger(viewId: -1)
     }
     
-    func updateActiveView(viewId: Int) -> Void {
+    func activateHamburger(viewId: Int) -> Void {
         print("updating active view")
         
         if (viewId == 1 || viewId == 2 || viewId == 3 || viewId == 4 || viewId == 5 || viewId == 6) {

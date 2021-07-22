@@ -37,6 +37,7 @@ struct ColorPicker: View {
             .padding()
             
             ColorSelectionView(viewModel: viewModel, r: $r, g: $g, b: $b, helper: helper)
+                .padding(.bottom)
         }
     }
     

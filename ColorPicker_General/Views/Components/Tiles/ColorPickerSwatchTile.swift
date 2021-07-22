@@ -21,7 +21,7 @@ struct ColorPickerSwatchTile: View {
         ZStack(alignment: .bottom) {
             Rectangle()
                 .foregroundColor(Color(red: self.r, green: self.g, blue: self.b))
-                .frame(width: UIScreen.main.bounds.width * 0.65, height: UIScreen.main.bounds.width * 0.85)
+                .frame(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.width * 0.8)
                 .shadow(color: Color(red: 0.94, green: 0.94, blue: 0.94), radius: 12)
             
             Text(helper.rgbToHex(r: self.r, g: self.g, b: self.b))

@@ -43,7 +43,7 @@ struct PLHeader: View {
                     .foregroundColor(.black)
             })
         }
-
+        .padding(.top)
     }
 }
 

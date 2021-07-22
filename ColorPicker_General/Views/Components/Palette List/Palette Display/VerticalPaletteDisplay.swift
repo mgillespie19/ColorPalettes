@@ -22,7 +22,7 @@ struct VerticalPaletteDisplay: View {
         VStack {
             ForEach(paletteColors) { color in
                 Rectangle().foregroundColor(Color(red: color.r, green: color.g, blue: color.b))
-                    .frame(height: UIScreen.main.bounds.width * 0.85 / CGFloat(paletteColors.count))
+                    .frame(height: UIScreen.main.bounds.width * 0.75 / CGFloat(paletteColors.count))
                     .onTapGesture {
                         self.r = color.r
                         self.g = color.g

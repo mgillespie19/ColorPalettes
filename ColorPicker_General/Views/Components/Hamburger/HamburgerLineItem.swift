@@ -20,6 +20,7 @@ struct HamburgerLineItem: View {
         VStack {
             HStack {
                 Text(title)
+                    .font(.body)
                 
                 Spacer()
                 

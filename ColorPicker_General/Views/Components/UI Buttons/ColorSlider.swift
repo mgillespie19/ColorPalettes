@@ -17,11 +17,13 @@ struct ColorSlider: View {
     var body: some View {
         HStack{
             Text(label)
-                .font(.title)
+                .font(.headline)
                 
             Slider(value: self.$color)
         }
-        .padding()
+        .padding(.top)
+        .padding(.leading)
+        .padding(.trailing)
     }
 }
 
